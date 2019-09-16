@@ -1,6 +1,6 @@
 'use strict';
 import Idx from "../../utilities/Idx";
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, StackActions } from "react-navigation";
 import { AppNavigator } from "../../config/navigator";
 import { REHYDRATE } from "redux-persist/lib/constants";
 import { USER_LOGIN, LOG_OUT, NAVIGATE_TO_DRIVER_FORM, DRIVER_FORM_NAV } from './user';
@@ -20,8 +20,9 @@ export const reset = (data) => {
 export const goTo = (data) => ({ type: GOTO, data });
 
 
-const initialState = AppNavigator.router.getStateForAction(NavigationActions.reset({
+const initialState = AppNavigator.router.getStateForAction(StackActions.reset({
     index: 0,
+    key: null,
     actions: [
         NavigationActions.navigate({
             routeName: 'Loader',
@@ -84,24 +85,27 @@ if(action.routeName)
     switch (action.type) {
         case USER_LOGIN:
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
+                    key: null,
                     actions: [NavigationActions.navigate({ routeName: "MainScreen" })],
                 }),
                 state
             );
         case NAVIGATE_TO_DRIVER_FORM:
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
+                    key: null,
                     actions: [NavigationActions.navigate({ routeName: "DriverForm" })],
                 }),
                 state
             );
         case DRIVER_FORM_NAV:
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
+                    key: null,
                     actions: [NavigationActions.navigate({ routeName: "DriverForm" })],
                 }),
                 state
@@ -112,8 +116,9 @@ if(action.routeName)
 
           RESET_DETAILS();
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
+                    key: null,
                     actions: [NavigationActions.navigate({ routeName: "Login" })],
                 }),
                 state
@@ -138,7 +143,7 @@ if(action.routeName)
         case LOG_OUT:
         RESET_DETAILS();
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
                     key: null,
                     actions: [NavigationActions.navigate({ routeName: "Login" })],
@@ -147,7 +152,7 @@ if(action.routeName)
             );
         case REHYDRATE:
             return AppNavigator.router.getStateForAction(
-                NavigationActions.reset({
+                StackActions.reset({
                     index: 0,
                     actions: [NavigationActions.navigate({ routeName: firstState })],
                 }),

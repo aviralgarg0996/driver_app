@@ -22,12 +22,14 @@ import _ from "underscore";
 let ExpCount = 0;
 
 const { height, width } = Dimensions.get('window');
-const resetAction = NavigationActions.reset({
+const resetAction = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'Login' })],
 });
-const resetToHome = NavigationActions.reset({
+const resetToHome = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'profile' })],
 });
 let driverExpRef = {};

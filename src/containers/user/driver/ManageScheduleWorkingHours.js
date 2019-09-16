@@ -46,11 +46,6 @@ import RestClient from '../../../utilities/RestClient';
 import { startLoading, stopLoading, showToast, hideToast } from '../../../redux/modules/app';
 import { StackActions, NavigationActions } from 'react-navigation';
 
-// const resetAction = NavigationActions.reset({
-//   index: 1,
-//   actions: [NavigationActions.navigate({ routeName: "Home" }),
-//       NavigationActions.navigate({ routeName: "ManageSchedule",params:{selectedDateObj: data.selectedDateObj} })],
-// });
 
 let changeRegion = 0;
 
@@ -776,38 +771,7 @@ class ManageScheduleWorkingHours extends Component<{}> {
               this.props.OrderActions.addManualSchedule(reqObjectWrapper,this.props.tokenforuser)
             }
             
-      //       NavigationActions.reset({
-			// 	index: 1,
-			// 	actions: [NavigationActions.navigate({ routeName: "Home" }),
-			// 			NavigationActions.navigate({ routeName: "ManageSchedule",params:{selectedDateObj: data.selectedDateObj} })],
-			// }),
-           
-    // setTimeout(function(data){ 
-    //     //data.navigate('Home');
-      
-
-    //   //  data.navigate('ManageSchedule', {selectedDateObj: data.state.params.dateSelected});
-    //     data.navigate('ManageSchedule', {selectedDateObj: data.state.params.dateSelected});
-    //   }, 2000,this.props.navigation);
-
- 
-
-            // setTimeout(function(data){ 
-            //  // data.navigate('Home');
-             
-
-            //   //data.navigate('ManageSchedule', {selectedDateObj: data.state.params.dateSelected});
-            //   data.navigate('ManageSchedule', {selectedDateObj: data.state.params.dateSelected});
-            // }, 2000,this.props.navigation);
-
-
-            
-
-           
-
-           //this.props.navigation.state.params.refresh();
-           //this.props.navigationProps('ManageSchedule',{selectedDateObj:dateClicked.dateString,refreshCal: this.refreshCalendorFunction})
-
+    
            
           }
           else{

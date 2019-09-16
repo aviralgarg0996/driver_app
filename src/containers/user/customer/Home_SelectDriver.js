@@ -49,8 +49,9 @@ import ShadowButton from "../../../components/common/ShadowButton";
 
 
 
-const resetAction = NavigationActions.reset({
+const resetAction = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'CustomerHomeNewx' })],
 });
 

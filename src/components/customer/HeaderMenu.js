@@ -38,8 +38,9 @@ class HeaderMenu extends Component<{}> {
 
      
 
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'CustomerHomeNewx' })],
       });
       this.props.dispatch(resetAction);
@@ -50,8 +51,9 @@ class HeaderMenu extends Component<{}> {
 
   onClickService() {
     if (this.props.catId > 2) {
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'Home_Food' })],
       });
       this.props.dispatch(resetAction);
@@ -63,8 +65,9 @@ class HeaderMenu extends Component<{}> {
 
   onClickPayment = () => {
     if (this.props.catId > 3) {
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'Home_PaymentProceed' })],
       });
       this.props.dispatch(resetAction);

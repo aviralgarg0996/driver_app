@@ -22,12 +22,14 @@ import { startLoading, stopLoading, showToast, hideToast } from '../../redux/mod
 const { height, width } = Dimensions.get('window');
 var ProgressBarArray=[50,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
-const resetAction = NavigationActions.reset({
+const resetAction = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'Login' })],
 });
-const resetToHome = NavigationActions.reset({
+const resetToHome = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'profile' })],
 });
 let equipmentList=[];

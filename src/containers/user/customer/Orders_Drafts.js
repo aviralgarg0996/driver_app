@@ -35,7 +35,7 @@ import { BoxShadow } from 'react-native-shadow';
 import CustomerConnection from "../../../config/Connection";
 import { Container, Card, CardItem, Body, Left, Right, Thumbnail, Content } from 'native-base'
 import { scaleHeight, scaleWidth, normalizeFont } from '../../../constants/responsive';
-import { NavigationActions } from 'react-navigation';
+import { NavigationActions, StackActions } from 'react-navigation';
 
 
 var strAddress = '228 Park Ave S, New York, NY 10003, USA';
@@ -366,7 +366,7 @@ class Orders_Drafts extends Component<{}> {
                     // Alert.alert('Something went wrong.')
                     this.props.navigation.dispatch({ type: 'SET_INVOICE', _data: this.props.orderDetails, _orders: this.props.orderDetails });
                     orderID = this.state.orderId;
-                    const resetAction = NavigationActions.reset({
+                    const resetAction = StackActions.reset({
                       index: 0,
                       actions: [
                         NavigationActions.navigate({

@@ -15,7 +15,7 @@ import {
 	goBack
 } from './nav';
 
-import { NavigationActions } from "react-navigation";
+import { NavigationActions, StackActions } from "react-navigation";
 
 // Actions
 export const SCHEDULE_ORDER_DATE = "SCHEDULE_ORDER_DATE";
@@ -430,8 +430,9 @@ export const addManualSchedule = (data, token) => {
 				dispatch(stopLoading());
 			
 							
-				 let resetAction = NavigationActions.reset({
+				 let resetAction = StackActions.reset({
 				index: 1,
+				key: null,
 				actions: [NavigationActions.navigate({ routeName: "Home" }),
 						NavigationActions.navigate({ routeName: "ManageSchedule",params:{selectedDateObj: data.selectedDateObj} })],
 			});
@@ -489,8 +490,9 @@ export const saveDefaultSchedule = (data, token) => {
 					msg: 'clean'
 				}))
 
-				let resetAction = NavigationActions.reset({
+				let resetAction = StackActions.reset({
 					index: 1,
+					key: null,
 					actions: [NavigationActions.navigate({ routeName: "Home" }),
 						NavigationActions.navigate({ routeName: "DefaultSchedule",params:{daySelected: data.daySelected} })],
 				  });
@@ -577,8 +579,9 @@ export const deleteDefaultSlot = (data, token) => {
 				//getWeeklySchedule({driverId:data.driver_id},token)
 				//data.navigate('DefaultSchedule',{daySelected:data.daySelected})
 
-				let resetAction = NavigationActions.reset({
+				let resetAction = StackActions.reset({
 					index: 1,
+					key: null,
 					actions: [NavigationActions.navigate({ routeName: "Home" }),
 							NavigationActions.navigate({ routeName: "DefaultSchedule",params:{   daySelected:data.daySelected} })],
 				});
@@ -798,8 +801,9 @@ export const deleteSchedule = (data, token) => {
 				dispatch(ToastActionsCreators.displayInfo(result.message));
 				//console.log('SCH-512,', data)
 
-				let resetAction = NavigationActions.reset({
+				let resetAction = StackActions.reset({
 					index: 1,
+					key: null,
 					actions: [NavigationActions.navigate({ routeName: "Home" }),
 							NavigationActions.navigate({ routeName: "ManageSchedule",params:{selectedDateObj: data.date} })],
 				});

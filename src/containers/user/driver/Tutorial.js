@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
 
-import Video from 'react-native-video';
-import VideoPlayer from 'react-native-video-controls';
-import YouTube from 'react-native-youtube'
+// import Video from 'react-native-video';
+// import VideoPlayer from 'react-native-video-controls';
+// import YouTube from 'react-native-youtube'
 //import Orientation from 'react-native-orientation';
 
 // create a component
@@ -47,7 +47,7 @@ class MyClass extends Component {
                  
   
 
-<YouTube
+{/* <YouTube
 apiKey="AIzaSyAD_dYT9A74FgpqqwvHbJMHSjAkCYjw_MY"
   videoId={'EMoXvr0Q9LE'} // The YouTube video ID
   play={this.state.play}             // control playback of video with true/false
@@ -61,7 +61,7 @@ apiKey="AIzaSyAD_dYT9A74FgpqqwvHbJMHSjAkCYjw_MY"
   onError={e => this.setState({ error: e.error })}
   modestbranding={true}
   style={{ alignSelf: 'stretch', height: 300,marginTop:100 ,marginBottom: 100, }}
-/>
+/> */}
 
 
  <TouchableOpacity onPress={()=>{ 

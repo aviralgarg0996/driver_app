@@ -23,12 +23,13 @@ import { bindActionCreators } from "redux";
 import * as UserActions from '../../../redux/modules/user';
 import { connect } from 'react-redux';
 import Connection from '../../../config/Connection'
-import { NavigationActions } from "react-navigation"
+import { NavigationActions, StackActions } from "react-navigation"
 import { scaleHeight, scaleWidth, normalizeFont } from "../../../constants/responsive";
 
 import ImagePickerCropper from "react-native-image-crop-picker";
-const resetAction = NavigationActions.reset({
+const resetAction = StackActions.reset({
   index: 0,
+  key: null,
   actions: [NavigationActions.navigate({ routeName: 'Login' })],
 });
 class ProfileDrawer1 extends Component {

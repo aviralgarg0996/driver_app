@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Button } from 'react-native';
  //import VideoPlayer from 'react-native-video-player';
-import VideoPlayer from 'react-native-video-controls';
+// import VideoPlayer from 'react-native-video-controls';
 import Constants from "../../constants";
 
 export default class Video extends Component {
@@ -21,7 +21,7 @@ export default class Video extends Component {
           loop
           disableSeek={false}
         /> */}
-         <VideoPlayer  style={{ height:Constants.BaseStyle.DEVICE_HEIGHT / 100 * 40}}
+         {/* <VideoPlayer  style={{ height:Constants.BaseStyle.DEVICE_HEIGHT / 100 * 40}}
               source={{ uri: 'http://techslides.com/demos/sample-videos/small.mp4'}}
               //autoplay
               playInBackground={false}
@@ -29,7 +29,7 @@ export default class Video extends Component {
               muted={false}
               disableBack={true}
               disableFullscreen= {true}
-          />
+          /> */}
       </View>
     );
   }

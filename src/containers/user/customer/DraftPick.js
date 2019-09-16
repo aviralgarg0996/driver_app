@@ -590,12 +590,7 @@ class DraftPick extends Component<{}> {
                                 backValue: false,
                                 door: ""
                             })
-                            // const resetAction = NavigationActions.reset({
-                            //     index: 0,
-                            //     actions: [NavigationActions.navigate({ routeName: 'CustomerHomeNewx' })],
-                            // });
-                            // this.props.navigation.dispatch(resetAction);
-                            //this.checkOrderApi()
+                          
                             let routeName = 'CustomerOrders';
                             this.props.navigation.navigate(routeName);
                             // this.props.navigation.navigate('OrdersInfo', { detail_id: this.orderID })

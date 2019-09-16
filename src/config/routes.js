@@ -3,7 +3,7 @@ import MainScreen from "../containers/user/MainScreen";
 import Login from "../containers/user/driver/Login";
 import Register from "../containers/user/driver/Register";
 import Home from "../containers/user/driver/home";
-
+import { createStackNavigator } from 'react-navigation-stack'; 
 import NewUser from "../components/driver/NewUser";
 
 //import EmailVerification from "../containers/user/driver/EmailVerification";
@@ -189,7 +189,7 @@ export default routes = {
       Home: {
         screen: TabNavigator({
           Home: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               Home: { screen: Home },
               Home_ScheduleOrder: { screen: Home_ScheduleOrder },
               ManageSchedule: { screen: ManageSchedule },

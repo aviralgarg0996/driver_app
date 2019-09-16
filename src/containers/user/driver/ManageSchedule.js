@@ -30,24 +30,14 @@ import { startLoading, stopLoading, showToast, hideToast } from '../../../redux/
 import { StackActions, NavigationActions } from 'react-navigation';
 
  const resetStack = ()=> {
-  return NavigationActions.reset({
+  return StackActions.reset({
     index: 0,
+    key: null,
     actions: [NavigationActions.navigate({ routeName: "Home" }),
         ],
   });
 };
 
-
-// import { StackActions, NavigationActions } from 'react-navigation';
-
-// const resetStack = (data)=> {
-//   return NavigationActions.reset({
-//     index: 1,
-//     actions: [NavigationActions.navigate({ routeName: "Home" }),
-//         NavigationActions.navigate({ routeName: "DefaultSchedule",params:{   daySelected:data.daySelected} })],
-  
-//   });
-// };
 
 
 class ManageSchedule extends Component<{}> {

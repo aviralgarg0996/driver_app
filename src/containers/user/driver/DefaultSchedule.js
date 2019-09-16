@@ -33,8 +33,9 @@ import constant from 'async/constant';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 const resetStack = ()=> {
-  return NavigationActions.reset({
+  return StackActions.reset({
     index: 1,
+    key: null,
     actions: [NavigationActions.navigate({ routeName: "Home" }),
         NavigationActions.navigate({ routeName: "Shedule" })],
   

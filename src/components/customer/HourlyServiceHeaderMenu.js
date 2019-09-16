@@ -12,6 +12,7 @@ import {
 import { connect } from 'react-redux';
 import Constants from '../../constants';
 import { BoxShadow } from 'react-native-shadow';
+import { StackActions } from 'react-navigation';
 var navigate = null;
 class HourlyServiceHeaderMenu extends Component<{}> {
   constructor(props) {
@@ -28,8 +29,9 @@ class HourlyServiceHeaderMenu extends Component<{}> {
   onClickLocation() {
     if (this.props.state.HomeTabsIndex > 0) {
       let { dispatch } = this.props.navigation;
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'CustomerHomeNewx' })],
       });
       this.props.dispatch(resetAction);
@@ -40,8 +42,9 @@ class HourlyServiceHeaderMenu extends Component<{}> {
   onClickService() {
     if (this.props.state.HomeTabsIndex > 0) {
       let { dispatch } = this.props.navigation;
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'CustomerHomeNewx' })],
       });
       this.props.dispatch(resetAction);
@@ -52,8 +55,9 @@ class HourlyServiceHeaderMenu extends Component<{}> {
 
   onClickPayment() {
     if (this.props.catId > 3) {
-      const resetAction = NavigationActions.reset({
+      const resetAction = StackActions.reset({
         index: 0,
+        key: null,
         actions: [NavigationActions.navigate({ routeName: 'Hourly_PaymentProceed' })],
       });
       this.props.dispatch(resetAction);

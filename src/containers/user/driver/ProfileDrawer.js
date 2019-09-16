@@ -28,13 +28,10 @@ import * as UserActions from '../../../redux/modules/user';
 import { connect } from 'react-redux';
 import Connection from '../../../config/Connection'
 import { stringify } from "querystring";
-import { NavigationActions } from "react-navigation"
+import { NavigationActions, StackActions } from "react-navigation"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ImagePickerCropper from "react-native-image-crop-picker";
-const resetAction = NavigationActions.reset({
-  index: 0,
-  actions: [NavigationActions.navigate({ routeName: 'Login' })],
-});
+
 class ProfileDrawer extends Component {
 
   constructor(props) {
@@ -281,7 +278,7 @@ class ProfileDrawer extends Component {
               >
                 <Text onPress={() => {
 
-                  const resetAction = NavigationActions.reset({
+                  const resetAction = StackActions.reset({
                     index: 0,
                     actions: [
                       NavigationActions.navigate({

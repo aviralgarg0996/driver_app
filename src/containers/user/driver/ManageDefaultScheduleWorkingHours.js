@@ -33,8 +33,9 @@ import { Chip } from 'react-native-paper';
 import { StackActions, NavigationActions } from 'react-navigation';
 
 const resetStack = (data)=> {
-  return NavigationActions.reset({
+  return StackActions.reset({
     index: 1,
+    key: null,
     actions: [NavigationActions.navigate({ routeName: "Home" }),
         NavigationActions.navigate({ routeName: "DefaultSchedule",params:{   daySelected:data.daySelected} })],
   
@@ -42,14 +43,6 @@ const resetStack = (data)=> {
 };
 // navigation.dispatch(resetStack({daySelected:this.state.daySelected})); 
 
-// let resetAction = NavigationActions.reset({
-//   index: 1,
-//   actions: [NavigationActions.navigate({ routeName: "Home" }),
-//       NavigationActions.navigate({ routeName: "DefaultSchedule",params:{   daySelected:data.daySelected} })],
-// });
-// //console.log('dispatching reset--deleteDefaultSlot- ', resetAction)
-
-// data.navigation.dispatch(resetAction); 
 
 class ManageDefaultScheduleWorkingHours extends Component<{}> {
   constructor(props){

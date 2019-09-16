@@ -20,14 +20,7 @@ let ExpCount = 0;
 
 
 const { height, width } = Dimensions.get('window');
-// const resetAction = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({ routeName: 'Login' })],
-// });
-// const resetToHome = NavigationActions.reset({
-//   index: 0,
-//   actions: [NavigationActions.navigate({ routeName: 'profile' })],
-// });
+
 let driverExpRef = {};
 let experienceYearData = [{
   value: '1',

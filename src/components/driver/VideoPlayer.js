@@ -13,7 +13,7 @@ import {
   View,
 } from 'react-native';
 
-import Video from 'react-native-video';
+// import Video from 'react-native-video';
 
 export default class VideoPlayer extends Component {
   constructor(props) {
@@ -63,7 +63,7 @@ export default class VideoPlayer extends Component {
     } = this.props;
     return (
       <TouchableOpacity onPress={() => {this.setState({paused: !this.state.paused})}}>
-        <Video
+        {/* <Video
          poster="https://baconmockup.com/300/200/"
           source={{uri:"https://youtu.be/ZmVPCnxN-1A"}}
           style={videoStyle}
@@ -92,7 +92,7 @@ export default class VideoPlayer extends Component {
           onTimedMetadata={console.log("this.onTimedMetadata")}  
 
           repeat={true}
-        />
+        /> */}
       </TouchableOpacity>   
     )
   }
