@@ -1,0 +1,86 @@
+{
+    "status": true,
+    "data": {
+        "orders": [
+            {
+                "pickStatus": false,
+                "arrive": false,
+                "dropStatus": false,
+                "_id": "5b9b9a7da6f12a37d30384ab",
+                "pickup": [
+                    {
+                        "_id": "5b9b9a7da6f12a37d30384ad",
+                        "pickup_point": "28.535517,77.391029",
+                        "address": "Noida",
+                        "pickup_status": 0,
+                        "priority": 0
+                    },
+                    {
+                        "_id": "5b9b9a7da6f12a37d30384ac",
+                        "pickup_point": "28.7041,77.1025",
+                        "address": "Delhi",
+                        "pickup_status": 0,
+                        "priority": 0
+                    }
+                ],
+                "drop_location": [
+                    {
+                        "_id": "5b9b9a7da6f12a37d30384ae",
+                        "drop_point": "26.4499,80.3319",
+                        "address": "Kanpur",
+                        "drop_status": 0,
+                        "priority": 0
+                    }
+                ],
+                "distance": 495.677952,
+                "vehicleType": "bike",
+                "deliveryType": "food",
+                "details": {
+                    "type": "food",
+                    "quantity": 2
+                },
+                "deliveryCharge": 3972,
+                "createdAt": "2018-09-14T11:24:45.833Z",
+                "updatedAt": "2018-09-14T11:24:45.833Z",
+                "__v": 0,
+                "id": "5b9b9a7da6f12a37d30384ab"
+            }
+        ],
+        "orderStatus": "Ongoing",
+        "paymentInfo": "Pending",
+        "accept": true,
+        "_id": "5b9b9a7da6f12a37d30384af",
+        "totalDistance": 495.677952,
+        "GST": 5,
+        "gstAmt": 199,
+        "subTotal": 3972,
+        "totalCharge": 4171,
+        "notes": "this order is define in the form of online delivery",
+        "userId": {
+            "_id": "5b89406b74d9ab2e10d94b5b",
+            "name": "Ravi Shankar",
+            "mobile": 785965489,
+            "address": "149, H Block, sector 63"
+        },
+        "date": "2018-04-08T00:00:00.000Z",
+        "time": "12:00",
+        "createdAt": 1536924285787,
+        "orderExpireTime": 24,
+        "driver_schedule": [
+            "9:00 AM to 11:00 AM Noida, ON",
+            "9:00 AM to 11:00 AM Gurugram, ON",
+            "9:00 AM to 11:00 AM Ghazibaad, ON",
+            "9:00 AM to 11:00 AM Delhi, ON"
+        ],
+        "maxTime": 1536924285787,
+        "minTime": -1536924285787,
+        "vehicleType": "bike",
+        "deliveryType": "food",
+        "time_frame": 6,
+        "urgency_cost": 0,
+        "updatedAt": "2018-09-18T03:33:05.146Z",
+        "orderId": 9152,
+        "__v": 0,
+        "driverId": "5b8fa6d9577e6907705a7797"
+    }
+}

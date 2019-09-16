@@ -1,0 +1,37 @@
+response.getReturnValue()[0]
+
+
+
+
+var  tempContact.= response.getReturnValue()[0];
+                
+          //      component.set('tempContact.Name',component.get("v.eeName")+' '+ component.get("v.eeLastName"));
+          component.set('tempContact.FirstName',"v.eeName"));
+
+            component.set('tempContact.FirstName',"v.eeName"));
+      
+        component.set('tempContact.LastName',"v.eeLastName"))
+      
+        component.set('tempContact.Email',"v.eeEmail"));
+        component.set('tempContact.Phone',"v.eePhone"));
+        component.set('tempContact.Move_Date__c',"v.startDate"));
+       // component.set('tempContact.Vehicle_Name__c',"v.vin").Id);
+        component.set('tempContact.BillingAccount_Account__c',component.get("v.billingAccount").Id);
+        component.set('tempContact.OrderCampaign_Campaign__c','7010v000000bMWMAA2');
+        component.set('tempContact.Type__c','Transferee');
+        component.set('tempContact.QuoteType__c',"v.quoteType");
+       
+        
+        
+        component.set('tempContact.MailingCountry',origin["country"]);
+        component.set('tempContact.MailingPostalCode',origin["postal_code"]);
+        component.set('tempContact.MailingState',origin["administrative_area_level_1"]);
+        component.set('tempContact.MailingCity',origin["route"]?origin["route"]:''+' '+origin["locality"]?origin["locality"]:''+','+origin["administrative_area_level_2"]?origin["administrative_area_level_2"]:'');
+        component.set('tempContact.MailingStreet',origin["street_number"]?origin["street_number"]:'' );
+        
+        component.set('tempContact.OtherCountry',destination["country"]);
+        component.set('tempContact.OtherPostalCode',destination["postal_code"]);
+        component.set('tempContact.OtherState',destination["administrative_area_level_1"]);
+        component.set('tempContact.OtherCity',destination["route"]?destination["route"]:''+' '+destination["locality"]?destination["locality"]:''+','+destination["administrative_area_level_2"]?destination["administrative_area_level_2"]:'');
+        component.set('tempContact.OtherStreet',destination["street_number"]?destination["street_number"]:'');
+   
