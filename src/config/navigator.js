@@ -3,9 +3,9 @@ import { StackNavigator, addNavigationHelpers, NavigationActions } from 'react-n
 import { connect } from 'react-redux'
 import routes from "./routes";
 import { BackHandler, Alert } from 'react-native';
-import { reduxMiddleware, addListener } from './reduxHelpers'
+// import { reduxMiddleware, addListener } from './reduxHelpers'
 import {RESET_MAP} from '../redux/modules/location';
-
+import { createStackNavigator } from 'react-navigation-stack'; 
 /* *
  * React Navigation's Configuration
  * */
@@ -20,7 +20,7 @@ rootNavigator = null
 /* *
  * @function: Making React navigation's stack navigator with routes and configuration 
  * */
-const AppNavigator = StackNavigator(routes, stackNavigatorConfiguration);
+const AppNavigator = createStackNavigator(routes, stackNavigatorConfiguration);
 
 
 
@@ -99,7 +99,7 @@ console.log(nav);
 
     return (
       <AppNavigator
-        navigation={addNavigationHelpers({ dispatch, state: nav, addListener })}
+        navigation={addNavigationHelpers({ dispatch, state: nav })}
       />
     );
   }

@@ -4,6 +4,9 @@ import Login from "../containers/user/driver/Login";
 import Register from "../containers/user/driver/Register";
 import Home from "../containers/user/driver/home";
 import { createStackNavigator } from 'react-navigation-stack'; 
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createDrawerNavigator } from 'react-navigation-drawer';
+
 import NewUser from "../components/driver/NewUser";
 
 //import EmailVerification from "../containers/user/driver/EmailVerification";
@@ -185,9 +188,9 @@ export default routes = {
   UrgencyForFurniture: { screen: UrgencyForFurniture },
   //
   profile: {
-    screen: DrawerNavigator({
+    screen: createDrawerNavigator({
       Home: {
-        screen: TabNavigator({
+        screen: createBottomTabNavigator({
           Home: {
             screen: createStackNavigator({
               Home: { screen: Home },
@@ -210,7 +213,7 @@ export default routes = {
             }),
           },
           Orders: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               Orders: { screen: Orders },
               AvailableOrders: { screen: AvailableOrders },
               Orders_ScheduledOrder: { screen: Orders_ScheduledOrder },
@@ -228,7 +231,7 @@ export default routes = {
             }),
           },
           Messages: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               Messages: { screen: Messages },
               MessagesList: { screen: MessagesList },
               Chat: { screen: Chat },
@@ -291,12 +294,12 @@ export default routes = {
 
 
   customerprofile: {
-    screen: DrawerNavigator({
+    screen: createDrawerNavigator({
       CustomerHomeNew: {
-        screen: TabNavigator({
+        screen: createBottomTabNavigator({
 
           CustomerHomeNewx: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               CustomerHomeNewx: { screen: CustomerHomeNew },
               Home_Food: { screen: Home_Food },
               Home_Services: { screen: Home_Services },
@@ -343,7 +346,7 @@ export default routes = {
 
 
           CustomerOrders: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               CustomerOrders: { screen: CustomerOrders },
               Orders_Pending: { screen: Orders_Pending },
               OrdersInfo: { screen: OrdersInfo },
@@ -364,7 +367,7 @@ export default routes = {
             }),
           },
           CustomerMessages: {
-            screen: StackNavigator({
+            screen: createStackNavigator({
               Messages: { screen: Messages },
               MessagesList: { screen: MessagesList },
               Chat: { screen: Chat },

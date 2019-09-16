@@ -5,7 +5,7 @@ import devToolsEnhancer from "remote-redux-devtools";
 import thunk from "redux-thunk";
 import reducer from "../redux";
 import logger from 'redux-logger'
- import  {reduxMiddleware,addListener} from './reduxHelpers'
+//  import  {reduxMiddleware,addListener} from './reduxHelpers'
 /* *
  * @function: Configuring and creating redux store
  * */
@@ -26,7 +26,7 @@ export default function configureStore() {
                  port: 5678
              })
         ),
-        applyMiddleware(thunk,reduxMiddleware,logger)
+        applyMiddleware(thunk,logger)
     );
 
     /* *
