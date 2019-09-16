@@ -61,13 +61,13 @@ if(!locationResponse)
 		 * @function: Initiliazing push notification utility
 		 * */
 		pushNotificationInit(store);
-		function handleFirstConnectivityChange(isConnected) {
-	      NetInfo.isConnected.removeEventListener('connectionChange',handleFirstConnectivityChange);
-	    }
-	    NetInfo.isConnected.addEventListener('connectionChange',handleFirstConnectivityChange);
-	    NetInfo.isConnected.fetch().then(isConnected => {
+		// function handleFirstConnectivityChange(isConnected) {
+	    //   NetInfo.isConnected.removeEventListener('connectionChange',handleFirstConnectivityChange);
+	    // }
+	    // NetInfo.isConnected.addEventListener('connectionChange',handleFirstConnectivityChange);
+	    // NetInfo.isConnected.fetch().then(isConnected => {
 
-	    });
+	    // });
 	}
 
 	componentWillUnmount() {

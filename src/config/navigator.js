@@ -99,7 +99,7 @@ console.log(nav);
 
     return (
       <AppNavigator
-        navigation={addNavigationHelpers({ dispatch, state: nav })}
+        navigation={{ dispatch, state: nav }}
       />
     );
   }
