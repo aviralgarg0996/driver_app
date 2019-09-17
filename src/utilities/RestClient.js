@@ -2,9 +2,8 @@
 
 import Connection from "../config/Connection";
 import querystring from "querystring";
-import { NetInfo, Alert, Platform } from "react-native";
+import NetInfo from "@react-native-community/netinfo";
 import axios from "axios"
-//import { getSocketClient } from "../utilities/SocketClient";
 
 
 let logintoken = "";
