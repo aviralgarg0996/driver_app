@@ -130,7 +130,10 @@ import NotesHourly from "../containers/user/customer/NotesHourly";
 
 // export list of routes.
 export default routes = {
-  Loader: { screen: Loader },
+
+
+  
+ // Loader: { screen: Loader },
   Login: { screen: Login },
   PersonalInfo: { screen: PersonalInfo },
   VehicleInfo: { screen: VehicleInfo },

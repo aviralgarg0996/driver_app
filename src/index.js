@@ -39,12 +39,14 @@ class Main extends Component{
 
 	}
 componentDidMount() {
+
+
 	checkPermissions(store,(locationResponse)=>{
 
 console.log("permissionscheck",locationResponse)
 if(!locationResponse)
 {
-	this.setState({appusesLocation:true})
+		this.setState({appusesLocation:true})
 	return;
 }
 
@@ -60,8 +62,12 @@ if(!locationResponse)
 		/* *
 		 * @function: Initiliazing push notification utility
 		 * */
-		pushNotificationInit(store);
-		// function handleFirstConnectivityChange(isConnected) {
+	
+		 
+		 //	pushNotificationInit(store);  // saketVersionUpdate
+	
+	
+	// function handleFirstConnectivityChange(isConnected) {
 	    //   NetInfo.isConnected.removeEventListener('connectionChange',handleFirstConnectivityChange);
 	    // }
 	    // NetInfo.isConnected.addEventListener('connectionChange',handleFirstConnectivityChange);

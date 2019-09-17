@@ -37,6 +37,11 @@ RESET_MAP({data:CustomerProfile.routes[CustomerProfile.routes.length-2].routeNam
 }
 
 
+
+
+
+
+
 /* *
  * @function: Providing dispatch and nav state into app 
  * */

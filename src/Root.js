@@ -5,6 +5,8 @@ import {
 } from 'react-native'
 import Progress from './components/common/Progress'
 import Navigator from "./config/navigator"
+import NavigatorNew from "./config/navigatorNew"
+
 import { Toast } from 'react-native-redux-toast';
 import Constants from './constants';
 import strings from './utilities/StringEn';
@@ -28,7 +30,7 @@ export default class Root extends Component{
     return (
         <SafeAreaView style={styles.container}>
         	<Progress/>
-          <Navigator/>
+          <NavigatorNew/>
           <Toast messageStyle={styles.toastStyle} 
           position={Constants.BaseStyle.DEVICE_HEIGHT/2}
           />

@@ -29,6 +29,7 @@ class MainScreen extends Component {
       driverId: props.userData.data._id,
       initialPosition: 'unknown',
     }
+   
   }
 //   componentWillMount() {
 

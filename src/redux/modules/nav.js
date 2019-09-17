@@ -46,6 +46,10 @@ function getCurrentRouteName(navigationState) {
 
 export default function reducer(state = initialState, action) {
 
+
+console.log(state)
+console.log(action);
+
     let firstState = "SplashScreen";
   
     if(action.type=="Navigation/NAVIGATE" || action.type== "Navigation/RESET")
@@ -159,8 +163,8 @@ if(action.routeName)
                 state
             );
 
-        default:
-            //console.log(JSON.stringify(state)    +   new Date().getTime());
+        default: 
+            console.log(JSON.stringify(state)    +   new Date().getTime());
             return AppNavigator.router.getStateForAction(action, state);
     }
 }
