@@ -2,8 +2,8 @@
 
 import Connection from "../config/Connection";
 import querystring from "querystring";
-import { NetInfo, Alert, Platform } from "react-native";
 import axios from "axios"
+import NetInfo from "@react-native-community/netinfo";
 //import { getSocketClient } from "../utilities/SocketClient";
 
 
@@ -13,8 +13,11 @@ class RestClient {
     static isConnected() {
         let context = this;
         return new Promise(function (fulfill, reject) {
+
+          
             NetInfo.isConnected.fetch()
                 .then(isConnected => {
+                   
                     if (isConnected)
                         fulfill(isConnected);
                     else {
