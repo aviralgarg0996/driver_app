@@ -1,7 +1,7 @@
 import { compose, applyMiddleware, createStore } from "redux";
 // import { persistStore, autoRehydrate } from "redux-persist";
 import { AsyncStorage, Platform } from "react-native";
-// import thunk from "redux-thunk";
+ import thunk from "redux-thunk";
 import reducer from "../redux";
 
 /* *
@@ -17,7 +17,7 @@ export default function configureStore() {
         // compose(
         //     autoRehydrate()
         // ),
-        // applyMiddleware(thunk)
+         applyMiddleware(thunk)
     );
 
     /* *
