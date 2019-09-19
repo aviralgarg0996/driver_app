@@ -78,4 +78,6 @@ const styles = StyleSheet.create({
 
 //make this component available to the app
 
+export {AppNavigator}
+
 export default connect(state => ({ user: state.user }))(createAppContainer(AppNavigator));

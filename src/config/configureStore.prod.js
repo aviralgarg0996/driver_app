@@ -1,4 +1,3 @@
-import { compose, applyMiddleware, createStore } from "redux";
 // import { persistStore, autoRehydrate } from "redux-persist";
 import { AsyncStorage, Platform } from "react-native";
 import { applyMiddleware, createStore } from "redux";
