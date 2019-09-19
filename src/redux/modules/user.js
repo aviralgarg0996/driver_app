@@ -406,7 +406,7 @@ export const resendEmailApi = (data) => {
 /**
  * Login API.
  */
-export const userLogin = (data, nav) => {
+export const userLogin = (data, nav,navigationObj) => {
     let requestObject = {
         email: data.email && data.email.trim(),
         password: data.password && data.password.trim(),
@@ -456,11 +456,15 @@ export const userLogin = (data, nav) => {
                     })
                 } else if (result.data) {
                     if (result.data.role == "CUSTOMER") {
+
                         nav("CUSTOMER")
                     }
                     else {
+
+                      
+
                         if (result.data.multiRole[0].status == false) {
-                            //alert('1')
+                           
                             if (result.data.currentstatuss == 'active') {
 
                                 nav("DRIVER");
@@ -475,7 +479,17 @@ export const userLogin = (data, nav) => {
                                     visibility: true
                                 })
                             }
-                            dispatch(LOGIN(result));
+
+                           result=LOGIN(result);
+                           console.log("result ", result);
+                           dispatch(result)
+
+                           navigationObj.navigate("MainScreen");
+                          // nav(result);
+
+                         //  obj.props.dispatch(result);
+
+                           // dispatch(result);
                         }
                     }
                 }

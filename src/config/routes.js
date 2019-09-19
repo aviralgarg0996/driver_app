@@ -1,4 +1,3 @@
-import { TabNavigator, StackNavigator, DrawerNavigator } from "react-navigation";
 import MainScreen from "../containers/user/MainScreen";
 import Login from "../containers/user/driver/Login";
 import Register from "../containers/user/driver/Register";

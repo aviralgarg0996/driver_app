@@ -386,10 +386,10 @@ class CustomerMapView extends Component {
         return (
             <View style={{ flex: 1 }}>
                 <View style={[styles.rootContainer]}>
-                    {(this.props.locationData.showmap.customerprofile
+                    {/* {(this.props.locationData.showmap.customerprofile
                         || this.props.locationData.showmap.CustomerHomeNewx
-                    ) &&
-                        <MapOnly />
+                    ) &&*/
+                        <MapOnly /> }
                     }
                     <View style={{
                         width: Constants.BaseStyle.DEVICE_WIDTH / 100 * 95,

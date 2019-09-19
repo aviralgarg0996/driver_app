@@ -1,7 +1,7 @@
 'use strict';
 import Idx from "../../utilities/Idx";
 import { NavigationActions, StackActions } from "react-navigation";
-import { AppNavigator } from "../../config/navigator";
+import { AppNavigator } from "../../config/navigatorNew";
 import { REHYDRATE } from "redux-persist/lib/constants";
 import { USER_LOGIN, LOG_OUT, NAVIGATE_TO_DRIVER_FORM, DRIVER_FORM_NAV } from './user';
 import {RESET_DETAILS} from './customerreducer';
@@ -20,13 +20,15 @@ export const reset = (data) => {
 export const goTo = (data) => ({ type: GOTO, data });
 
 
+
+
+
 const initialState = AppNavigator.router.getStateForAction(StackActions.reset({
     index: 0,
     key: null,
     actions: [
         NavigationActions.navigate({
             routeName: 'Loader',
-
         }),
     ],
 }));
@@ -47,7 +49,7 @@ function getCurrentRouteName(navigationState) {
 export default function reducer(state = initialState, action) {
 
 
-console.log(state)
+console.log(state);
 console.log(action);
 
     let firstState = "SplashScreen";
@@ -88,6 +90,13 @@ if(action.routeName)
 
     switch (action.type) {
         case USER_LOGIN:
+
+
+try{
+    console.log(StackActions);
+
+
+    
             return AppNavigator.router.getStateForAction(
                 StackActions.reset({
                     index: 0,
@@ -96,6 +105,15 @@ if(action.routeName)
                 }),
                 state
             );
+
+           
+            }
+            catch(ex ){
+
+                alert(ex); 
+
+            }
+
         case NAVIGATE_TO_DRIVER_FORM:
             return AppNavigator.router.getStateForAction(
                 StackActions.reset({

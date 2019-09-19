@@ -87,12 +87,14 @@ class Login extends Component {
             return;
         }
         this.props.UserActions.userLogin({ ...this.state }, (data) => {
+
             if (data == "CUSTOMER") {
                 this.props.navigation.navigate("customerprofile")
             }
-            else
+            else if(data=='Success')
                 this.props.navigation.navigate("Success")
-        });
+        },  this.props.navigation
+        );
     }
 
     render() {
