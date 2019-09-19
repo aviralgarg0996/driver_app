@@ -49,7 +49,7 @@ function getCurrentRouteName(navigationState) {
 export default function reducer(state = initialState, action) {
 
 
-console.log(state);
+console.log(state)
 console.log(action);
 
     let firstState = "SplashScreen";

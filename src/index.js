@@ -4,22 +4,10 @@ import { Provider } from 'react-redux'
 //import Permissions from 'react-native-permissions';
 import configureStore from "./config/configureStore";
 import Root from './Root';
-//import configureClient, { destroySocketClient } from "./utilities/SocketClient";
 import { pushNotificationInit , pushNotificationRemove }from "./utilities/PushNotification";
 import { checkPermissions }from "./utilities/Locations";
-//import localDb from "./utilities/localDb";
 
 
-
-let socketClient = null;
-
-Uniquedatataa=0;
-
-currentPage = null, currentRoom=null;
-
-/* *
- * @function: Configuring redux store
- * */
 export const store = configureStore();
 
 /*
@@ -58,23 +46,7 @@ if(!locationResponse)
 	})
 }
 
-	componentWillMount() {
-		/* *
-		 * @function: Initiliazing push notification utility
-		 * */
-	
-		 
-		 //	pushNotificationInit(store);  // saketVersionUpdate
-	
-	
-	// function handleFirstConnectivityChange(isConnected) {
-	    //   NetInfo.isConnected.removeEventListener('connectionChange',handleFirstConnectivityChange);
-	    // }
-	    // NetInfo.isConnected.addEventListener('connectionChange',handleFirstConnectivityChange);
-	    // NetInfo.isConnected.fetch().then(isConnected => {
 
-	    // });
-	}
 
 	componentWillUnmount() {
 		/* *

@@ -1,6 +1,7 @@
 import { compose, applyMiddleware, createStore } from "redux";
 // import { persistStore, autoRehydrate } from "redux-persist";
 import { AsyncStorage, Platform } from "react-native";
+import { applyMiddleware, createStore } from "redux";
  import thunk from "redux-thunk";
 import reducer from "../redux";
 
@@ -20,19 +21,5 @@ export default function configureStore() {
          applyMiddleware(thunk)
     );
 
-    /* *
-     * @function: Persisting store for save all store's data except blacklisted reducers in device's memory
-     * */
-    // persistStore(
-    //     store,
-    //     { blacklist: ["app", "nav", "toast","location"], storage: AsyncStorage },
-    //     () => {
-    //         let storeData = store.getState();
-    //     }
-    // );
-    
-    /* *
-     * @return: returning store when it's successfully created 
-     * */
     return store;
 }
