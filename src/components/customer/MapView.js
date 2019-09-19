@@ -390,7 +390,7 @@ class CustomerMapView extends Component {
                         || this.props.locationData.showmap.CustomerHomeNewx
                     ) &&*/
                         <MapOnly /> }
-                    }
+                    
                     <View style={{
                         width: Constants.BaseStyle.DEVICE_WIDTH / 100 * 95,
                         height: Constants.BaseStyle.DEVICE_HEIGHT / 100 * 7.2,
