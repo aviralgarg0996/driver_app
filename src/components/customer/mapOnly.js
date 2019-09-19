@@ -150,41 +150,7 @@ class mapViewOnly extends Component {
                 // customMapStyle={Constants.MapStyle.default}
                 >
 
-                    {this.props.state.markerPositions.map((marker, i) => (
-                        <MapView.Marker coordinate={marker.coordinates}
-                            title={marker.title}
-                            key={marker.id}
-                        >
-                            <View>
-                                <Image source={marker.img}
-                                    style={{ height: 20, width: 20, resizeMode: 'center' }}
-                                ></Image>
-                            </View>
-                        </MapView.Marker>
-
-                    ))
-
-                    }
-
-                    {<MapView.Marker coordinate={this.props.locationData.currentLocation.coords
-                    }
-                    >
-                        <View>
-                            <Image
-                                style={{ height: 20, width: 20, resizeMode: 'center' }}
-                            ></Image>
-                        </View>
-                    </MapView.Marker>
-                    }
-                    {wayPoints.length > 1 &&
-                        <MapViewDirections
-                            origin={origin}
-                            waypoints={wayPoints}
-                            destination={destination}
-                            apikey={GOOGLE_MAPS_APIKEY}
-                            strokeWidth={8}
-                            strokeColor="#809fff"
-                        />}
+                 
 
                 </MapView>
 
