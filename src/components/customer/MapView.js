@@ -35,6 +35,8 @@ import * as AdminActions from '../../redux/modules/adminReducer';
 import Picker from 'react-native-wheel-picker'
 var PickerItem = Picker.Item;
 import MapOnly from './mapOnly'
+//import MapOnly from '../../containers/user/driver/CustomerMapReviewReplica';
+
 import DateTimePicker from 'react-native-modal-datetime-picker';
 import { scaleHeight, scaleWidth, normalizeFont } from "../../constants/responsive";
 

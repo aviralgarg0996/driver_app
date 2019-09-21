@@ -7,6 +7,8 @@ import { startLoading, stopLoading } from '../redux/modules/app';
 import Constants from '../constants';
 import Geocoder from 'react-native-geocoder';
 import { PermissionsAndroid } from 'react-native';
+import Geolocation from 'react-native-geolocation-service';
+
 
 Geocoder.fallbackToGoogle(Constants.GoogleAPIKey);
 
@@ -27,18 +29,22 @@ async function requestCameraPermission(store, type) {
 
 async function androidCheck(store, type) {
   try {
+   
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
       {
         'title': 'Device Location',
         'message': 'It\'s here needs to access your Location'
       }
+
     )
+
+
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
 
       try {
 
-        navigator.geolocation.getCurrentPosition(function (e) {
+        Geolocation.getCurrentPosition(function (e) {
           console.log("success in coords", JSON.stringify(e))
           type(e)
           store.dispatch(LocationActions.setDetails(e));
@@ -46,7 +52,7 @@ async function androidCheck(store, type) {
           type(e)
         });
 
-        navigator.geolocation.watchPosition(
+        Geolocation.watchPosition(
           (success) => {
             store.dispatch(LocationActions.setDetails(success));
 
@@ -63,7 +69,7 @@ async function androidCheck(store, type) {
         );
       }
       catch (Ex) {
-        //  alert(Ex);
+          alert(Ex);
       }
     } else {
      
@@ -74,7 +80,7 @@ async function androidCheck(store, type) {
   }
 }
 async function iosCheck(store, type) {
-  navigator.geolocation.getCurrentPosition(function (e) {
+  Geolocation.getCurrentPosition(function (e) {
     console.log("success in coords", JSON.stringify(e))
     type(e)
     store.dispatch(LocationActions.setDetails(e));
