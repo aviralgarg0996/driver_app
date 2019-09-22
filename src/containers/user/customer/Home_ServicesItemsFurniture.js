@@ -79,7 +79,7 @@ class Home_ServicesItemsFurniture extends Component<{}> {
     this.setState({ isVisible: true, itemId: id, parentId: parentId, category: category });
   }
   onDeleteItem(id, parentId, category) {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     this.setState({ itemId: id, parentId: parentId });
     Alert.alert(
       'Delete Item',

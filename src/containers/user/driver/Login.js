@@ -66,7 +66,7 @@ class Login extends Component {
 
     loginUser() {
         let context = this;
-        let { dispatch } = this.props.navigation;
+        let { dispatch } = this.props;
         let { email, phone, password } = this.state;
         let { navigate } = this.props.navigation;
 

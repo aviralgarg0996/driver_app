@@ -267,7 +267,6 @@ class ToogleSwitch extends Component {
   }
 
   onDone() {
-    //let { dispatch } = this.props.navigation;
 
     this.setState({
       toggleModalVisible: false,

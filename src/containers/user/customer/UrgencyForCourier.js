@@ -219,7 +219,7 @@ class UrgencyForCourier extends Component<{}> {
 
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -284,55 +284,7 @@ class UrgencyForCourier extends Component<{}> {
     var timeframe = context.state.timeFrameValue;
     AsyncStorage.getItem("id").then((value) => {
       this.props.dispatch(startLoading())
-      console.log("value to pass", JSON.stringify({
-        "pickup": pickup,
-        "drop_location": drop,
-        "date": this.state.DeliveryDate,
-        "time": this.state.StartTime,
-        "quantity": strItems,
-        "id": value,
-        "vehicle": this.props.state.vehicleID,
-        "service_type": 3,
-        "delivery_type_usf": 1,
-
-        "pickup": [
-          pickup
-        ],
-        "drop_location": [
-          drop
-        ],
-        "item": [
-          [
-            {
-              "name": "test",
-              "size": 8832,
-              "weight": 123,
-              "Id": 0,
-              "quantity": 1,
-              "height": 23,
-              "width": 32,
-              "depth": 12,
-              "isSkid": false
-            }
-          ]
-        ],
-        "date": this.state.DeliveryDate,
-        "time": this.state.StartTime,
-        "id": "5c00adbf56b711154419f236",
-        "service_type": 3,
-        "vehicle": "5b8ff064047cc20efd9d1dad",
-        "delivery_type_usf": 2,
-        "driverHelp": false,
-        "extraHelper": true,
-        "residential": [
-          1
-        ],
-        "tailgate": [
-          1
-        ]
-
-
-      }))
+    
       fetch(CustomerConnection.getTempUrl() + 'place-order/create/', {
 
         method: 'POST',
@@ -397,7 +349,7 @@ class UrgencyForCourier extends Component<{}> {
           this.setState({ showMap: false })
 
 
-          dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
+          this.props.dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
 
           navigate('Home_DocumentInvoice');
         })

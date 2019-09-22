@@ -254,7 +254,6 @@ class CustomerMapView extends Component {
     }
 
     clickOnEstimate() {
-        //let { dispatch } = this.props.navigation;
         if (this.props.state.pickupArr.length < 2 && this.props.state.HourlyFlag == 0) {
             this.props.dispatch(ToastActionsCreators.displayInfo('Please enter Pickup Location..'));
         }
@@ -264,6 +263,7 @@ class CustomerMapView extends Component {
         }
         else if (this.props.state.DeliveryServiceOpacity == 0.8 && this.props.state.HourlyFlag == 0) {
             AdminActions.Get_Admin_Data('/admin/getservice', {}, 'admin').then((res) => {
+                console.log("response",res)
                 this.props.dispatch({ type: 'SET_DETAILS_CATEGORY', data: res.data })
                 this.props.dispatch({ type: 'SET_TABINDEX', index: 1 });
                 navigate('Home_Food');

@@ -84,12 +84,7 @@ class UrgencyForFood1 extends Component<{}> {
     var _ampm = moment(ss).format('A');
     var strDate1 = moment(ss).add('hour', 1).format('hh:mm');
     var _ampm1 = moment(ss).add('hour', 1).format('A');
-
-
-
-    
-
-    this.setState({
+ this.setState({
       PickerTime: moment().hour(hour).minute(minute).toDate(),
       StartTime: strDate, StartAMPM: _ampm, EndTime: strDate1, EndAMPM: _ampm1,
       timeFrame: '1 Hour', ProgressWidth: (Constants.BaseStyle.DEVICE_WIDTH / 100) * 90,
@@ -132,7 +127,7 @@ class UrgencyForFood1 extends Component<{}> {
 
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -208,7 +203,7 @@ class UrgencyForFood1 extends Component<{}> {
           orderID = arr.data && arr.data._id;
           this.setState({ showMap: false })
           this.props.dispatch({ type: 'SET_SELECTED_FLAG', selectedTabFlag: 2 });
-          dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
+          this.props.dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
           navigate('Home_Invoice');
         })
         .catch((error) => {
@@ -284,7 +279,7 @@ class UrgencyForFood1 extends Component<{}> {
         <HeaderBackground navigation={navigate} goBack={goBack} />
         <HeaderMenu navigation={navigate} catId={2} />
         <View style={{ flex: 1 }}>
-          {<ServiceRegularMapView navigation={navigate} height={90} showList={true} />}
+          {/* {<ServiceRegularMapView navigation={navigate} height={90} showList={true} />} */}
           <View style={{  marginBottom: scaleHeight(100) }}>
         
           <ShadowButton

@@ -215,7 +215,8 @@ class CustomerHome extends Component {
           }}>
             <SearchPlace navigation={navigate} dispatch={this.props.navigation} />
           </Modal>
-          <Modal animationType={"fade"} transparent={true} visible={this.props.state.placeModalVisibility_hourly} onRequestClose={() => { this.props.dispatch({ type: 'PLACE_FINDER_MODAL_HOURLY', visibility: false }) }}>
+          <Modal animationType={"fade"} transparent={true} visible={this.props.state.placeModalVisibility_hourly} 
+          onRequestClose={() => { this.props.dispatch({ type: 'PLACE_FINDER_MODAL_HOURLY', visibility: false }) }}>
             <SearchPlace_Hourly navigation={navigate} dispatch={this.props.navigation} />
           </Modal>
         </ScrollView>

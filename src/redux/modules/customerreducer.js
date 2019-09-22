@@ -737,6 +737,7 @@ export default function CustomerReducer(state = initialState, action = {}) {
       newstate.DeliveryType = action._deliverytype;
       newstate.DocumentWeight = action._weight;
       var arr1 = [];
+      console.log("data====>")
       if (newstate.pickupArr.length >= newstate.dropArr.length) {
         newstate.pickupArr.map((val, i) => {
           if (!(val.address.indexOf('Choose') == 0))

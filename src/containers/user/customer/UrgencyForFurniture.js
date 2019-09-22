@@ -267,7 +267,7 @@ class UrgencyForFurniture extends Component<{}> {
 
 
   CallVehicelCost() {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     var strItems = [];
     var strWeight = [];
     var pickup = [];

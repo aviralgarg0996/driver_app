@@ -12,7 +12,8 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
-  ScrollView
+  ScrollView,
+  Alert
 } from 'react-native';
 
 import { connect } from 'react-redux';
@@ -29,6 +30,7 @@ import ShadowButton from '../../../components/common/ShadowButton';
 class Home_ServicesDoc extends Component<{}> {
   constructor(props) {
     super(props);
+    Alert.alert("text")
     this.state = {
       opacity: 1,
       activecolor: '#C3C1C0',
@@ -77,7 +79,8 @@ class Home_ServicesDoc extends Component<{}> {
     this.props.dispatch({ type: 'SET_ITEMRANGE_ARRAY', array: arr1 });
   }
 
-  itemList(data) {
+  itemList=(data)=> {
+    console.log("data=====>",data)
     let { item, index } = data;
     return (
       <View style={{
@@ -155,7 +158,7 @@ class Home_ServicesDoc extends Component<{}> {
   }
 
   CallUrgency() {
-    let { navigate } = this.props.navigation;
+    let { navigate } = this.props;
     var strItems = [];
     var strWeight = [];
     var pickup = [];
@@ -231,21 +234,21 @@ this.props.state.DisplayLocationAddress.map((val, i) => {
   render() {
     const { navigate, goBack } = this.props.navigation;
     var arr1 = [];
+    console.log("props1111",this.props)
     this.props.state.DisplayLocationAddress.map((val, i) => {
       if (!(val.address.indexOf('Choose') == 0))
         arr1.push(val);
     });
+    console.log("arr1======>",arr1)
     return (
       <View style={{ flex: 1, backgroundColor: Constants.Colors.BackgroundBlue }}>
         <HeaderBackground navigation={navigate} goBack={goBack} />
         <HeaderMenu navigation={navigate} catId={2} />
         <View style={{ height: scaleHeight(20), backgroundColor: 'transparent' }} />
-        <ScrollView >
           <FlatList
             data={arr1}
-            renderItem={this.itemList.bind(this)}
+            renderItem={this.itemList}
           />
-        </ScrollView>
 
 
         <ShadowButton

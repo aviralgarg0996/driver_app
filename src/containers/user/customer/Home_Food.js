@@ -35,7 +35,7 @@ class Home_Food extends Component<{}> {
   }
 
   OnClickFood = (element) => {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
     //  alert("CustomerConnection" + CustomerConnection.getCustomerTempUrl())
     this.props.dispatch(startLoading());
@@ -44,7 +44,8 @@ class Home_Food extends Component<{}> {
       .then((response) =>
         response.json())
       .then((arr) => {
-        dispatch({ type: 'SET_FOODRANGE', range: arr.data[0].dgUnit, _deliverytype: 0, _weight: 3 });
+        console.log("arr=======>",arr)
+        this.props.dispatch({ type: 'SET_FOODRANGE', range: arr.data[0].dgUnit, _deliverytype: 0, _weight: 3 });
         navigate('Home_Services');
         this.props.dispatch(stopLoading());
       }).catch(error => {
@@ -53,7 +54,7 @@ class Home_Food extends Component<{}> {
 
   }
   OnClickDocument(element) {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
     this.props.dispatch(startLoading());
     //   var REQUEST_URL='http://18.212.245.222:7010/api/dgunit/get/?type=documents';
@@ -75,7 +76,7 @@ class Home_Food extends Component<{}> {
 
   OnClickCourier() {
     let { navigate } = this.props.navigation;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     var unit = {
       weight: 10,
       height: 1,
@@ -140,7 +141,6 @@ class Home_Food extends Component<{}> {
 
 
   handlePress = (element) => {
-
     if (element.name == 'Food')
       this.OnClickFood(element)
     if (element.name == 'Documents')

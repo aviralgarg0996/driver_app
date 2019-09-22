@@ -190,7 +190,7 @@ class UrgencyForDoc1 extends Component<{}> {
   }
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -327,7 +327,7 @@ class UrgencyForDoc1 extends Component<{}> {
 
   CallVehicelCost(_timeframe) {
     //let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
     var len = this.props.state.pickupArr.length;
     var strItems = [];

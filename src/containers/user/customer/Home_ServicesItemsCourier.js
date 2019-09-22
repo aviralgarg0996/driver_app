@@ -84,7 +84,7 @@ class Home_ServicesItemsCourier extends Component<{}> {
     this.setState({ isVisible: true, itemId: id, parentId: parentId });
   }
   onDeleteItem(id, parentId) {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     this.setState({ itemId: id, parentId: parentId });
     Alert.alert(
       'Delete Item',
@@ -239,7 +239,7 @@ class Home_ServicesItemsCourier extends Component<{}> {
   }
 
   CallUrgency() {
-    let { navigate } = this.props.navigation;
+    let { navigate } = this.props;
     var strItems = [];
     var strWeight = [];
     var strTailgate = [];

@@ -34,7 +34,7 @@ class HeaderMenu extends Component<{}> {
   }
   onClickLocation() {
     if (this.props.state.HomeTabsIndex > 0) {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
 
      
 
@@ -78,7 +78,7 @@ class HeaderMenu extends Component<{}> {
 
   onClickSelectDriver = () => {
     if (this.props.state.HomeTabsIndex > 0) {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
       this.props.dispatch({ type: 'SET_SELECTED_FLAG', selectedTabFlag: 3 }, () => this.setState({ selectedTabFlag: 3 }));
       navigate('Home_SelectDriver');
     }

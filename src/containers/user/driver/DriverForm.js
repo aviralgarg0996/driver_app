@@ -463,7 +463,7 @@ class DriverForm extends Component {
       this.setState({flagPersonal:1,flagVehicle:0,DriverInfo:1});
     }
     else {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
         let checkFieldsValue=this.checkFields()
 
       // alert("checkfield1")

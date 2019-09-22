@@ -239,7 +239,7 @@ class UrgencyForCourier1 extends Component<{}> {
   }
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -338,7 +338,7 @@ class UrgencyForCourier1 extends Component<{}> {
           this.setState({ showMap: false })
 
           this.props.dispatch({ type: 'SET_SELECTED_FLAG', selectedTabFlag: 2 });
-          dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
+          this.props.dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
 
           navigate('Home_DocumentInvoice');
         })

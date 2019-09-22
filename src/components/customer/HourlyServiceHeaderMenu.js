@@ -28,7 +28,7 @@ class HourlyServiceHeaderMenu extends Component<{}> {
 
   onClickLocation() {
     if (this.props.state.HomeTabsIndex > 0) {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
       const resetAction = StackActions.reset({
         index: 0,
         key: null,
@@ -41,7 +41,7 @@ class HourlyServiceHeaderMenu extends Component<{}> {
   }
   onClickService() {
     if (this.props.state.HomeTabsIndex > 0) {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
       const resetAction = StackActions.reset({
         index: 0,
         key: null,
@@ -67,7 +67,7 @@ class HourlyServiceHeaderMenu extends Component<{}> {
 
   onClickSelectDriver() {
     if (this.props.state.HomeTabsIndex > 0) {
-      let { dispatch } = this.props.navigation;
+      let { dispatch } = this.props;
       this.props.dispatch({ type: 'SET_HOURLYSERVICE_TABINDEX', selectedTabFlag: 2 }, () => this.setState({ selectedTabFlag: 3 }));
       navigate('Home_SelectDriver');
     }

@@ -63,7 +63,7 @@ class SearchPlace extends Component {
   searchPlace(placeid, address) {
     dismissKeyboard();
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     var url = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + placeid + '&key=' + Constants.GoogleAPIKey + '';
     fetch(url)
       .then((response) => response.json())

@@ -125,7 +125,8 @@ class Home_PaymentProceed extends Component<{}> {
         "customerId": value
       }
       console.log('obj----', obj)
-      RestClient.urlPost("place-order/payment", obj).then((result) => {
+      RestClient.post("place-order/payment", obj).then((result) => {
+        console.log("result===>",result)
         if (result.status == true) {
           navigate('PaymentSuccess');
         } else {

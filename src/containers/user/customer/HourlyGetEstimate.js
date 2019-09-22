@@ -143,7 +143,7 @@ class HourlyGetEstimate extends Component<{}> {
 
     CallInvoice() {
         // let context = this;
-        let { dispatch } = this.props.navigation;
+        let { dispatch } = this.props;
         let { navigate } = this.props.navigation;
         if ((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location') || this.props.state.vehicleID == 0) {
             this.refs.toast.show('You have not select either Start Location, End Location or Vehicle', DURATION.LENGTH_LONG);
@@ -169,17 +169,7 @@ class HourlyGetEstimate extends Component<{}> {
                     "priority": 0,
                 }
             ]
-            console.log("requestttttt",JSON.stringify({
-                "pickup": pickup,
-                "drop_location": drop,
-                "date": this.props.state.HourlyServiceDate,
-                "time": this.props.state.HourlyServiceDisplayTime,
-                // "id": value,
-                'vehicle': this.props.state.vehicleID,
-                'duration': this.props.state.HourlyItem,
-                "service_type": 5,
-                'extraHelper': this.state.ExtraHelp,
-                'driver_help': this.state.DriverHelp}))
+            
             AsyncStorage.getItem("id").then((value) => {
                 console.log("idddddd",value)
                 fetch(CustomerConnection.getTempUrl() + 'place-order/create', {

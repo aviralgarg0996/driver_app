@@ -182,7 +182,7 @@ class UrgencyForFurniture1 extends Component<{}> {
 
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -369,7 +369,7 @@ class UrgencyForFurniture1 extends Component<{}> {
           //   orderID = arr.data.orderId;
           orderID = arr.data._id;
           this.setState({ showMap: false })
-          dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
+          this.props.dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
           //navigate('Home_DocumentInvoice');
           this.props.dispatch({ type: 'SET_SELECTED_FLAG', selectedTabFlag: 2 });
           navigate('Home_FurnitureInvoice');
@@ -382,7 +382,7 @@ class UrgencyForFurniture1 extends Component<{}> {
   }
 
   CallVehicelCost() {
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     var strItems = [];
     var strWeight = [];
     var pickup = [];

@@ -203,7 +203,7 @@ class UrgencyForFood extends Component<{}> {
 
   CallInvoice() {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     let { navigate } = this.props.navigation;
 
     if (!context.props.state.ActiveButton) {
@@ -255,18 +255,6 @@ class UrgencyForFood extends Component<{}> {
     console.log(this.props.state.dropArr)
 
     AsyncStorage.getItem("id").then((value) => {
-      console.log(JSON.stringify({
-        "pickup": pickup,
-        "drop_location": drop,
-        "date": this.state.DeliveryDate,
-        "time": this.state.StartTime,
-        "quantity": strItems,
-        "id": value,
-        "vehicle": this.props.state.vehicleID,
-        "service_type": 1,
-        "delivery_type_usf": 1
-      }));
-
       fetch(CustomerConnection.getTempUrl() + '/place-order/create/', {
         method: 'POST',
         headers: {
@@ -294,7 +282,7 @@ class UrgencyForFood extends Component<{}> {
 
           console.log('response array : ========', arr)
 
-          dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
+          this.props.dispatch({ type: 'SET_INVOICE', _data: arr.data, _orders: arr.data.orders });
           navigate('Home_Invoice');
         })
         .catch((error) => {

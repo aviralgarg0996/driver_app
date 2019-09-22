@@ -54,7 +54,7 @@ class SearchPlace_Hourly extends Component<{}> {
 
   searchPlace(placeid, address) {
     let context = this;
-    let { dispatch } = this.props.navigation;
+    let { dispatch } = this.props;
     //var CountryName='',CountryID = '',StateID='',StateName='',City='',strLat='',strLong='',TCor='',Zone='',District='';
     var url = 'https://maps.googleapis.com/maps/api/place/details/json?placeid=' + placeid + '&key=' + Constants.GoogleAPIKey + '';
     fetch(url)
