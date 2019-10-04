@@ -223,7 +223,7 @@ this.props.state.DisplayLocationAddress.map((val, i) => {
 
         this.props.dispatch({ type: 'SET_VEHICLECOST', _data: arr1.data, id: 0 });
         //this.props.dispatch({type:'ACTIVE_VEHICLE', tagid:0});
-        navigate('UrgencyForDoc');
+        this.props.navigation.navigate('UrgencyForDoc');
       })
       .catch((error) => {
         this.props.dispatch(stopLoading())
