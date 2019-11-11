@@ -58,6 +58,7 @@ class CustomerOrders extends Component {
       animating: false,
     }
 
+    console.log(this.props.user)
 
   }
 
@@ -692,7 +693,8 @@ const mapStateToProps = state => ({
   modalstate: state.ModalHandleReducer,
   deviceToken: state.user.deviceToken,
   ScheduleInfo: state.user.scheduleData,
-  draftsInfo: state.user.draftsData
+  draftsInfo: state.user.draftsData,
+  user:state.user
 });
 
 const mapDispatchToProps = dispatch => ({

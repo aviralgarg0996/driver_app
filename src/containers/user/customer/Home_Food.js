@@ -91,7 +91,7 @@ class Home_Food extends Component<{}> {
 
   OnClickFurniture() {
     let { navigate } = this.props.navigation;
-    let { dispatch } = this.props;
+    let { dispatch } = this.props.navigation;
     this.props.dispatch(startLoading())
     var REQUEST_URL = CustomerConnection.getAdminUrl() + '/admin/getfurniturebycategory';
     var furnitureArray = [];

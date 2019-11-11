@@ -177,7 +177,7 @@ console.log("-------" +    JSON.stringify(data))
     distance: 890,
   }
 
-  socketUpdate.isTest(requestObject);
+  socketUpdate.driverScoketEvent(requestObject);
   /*RestClient.post_Synch("drivers/savedriverlatlng",requestObject).then((result) => {
           if(result.status==1){
         console.log(result.message);				

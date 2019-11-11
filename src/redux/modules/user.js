@@ -2,30 +2,30 @@
 import {
     Platform,
     AsyncStorage,
-    ToastAndroid
+    ToastAndroid,
 } from 'react-native';
 import _ from "underscore";
 import {
     startLoading,
     stopLoading,
     showToast,
-    hideToast
+    hideToast,
 } from './app';
 import {
     goBack,
-    reset
+    reset,
 } from './nav';
 import {
     setDetails,
-    setCurrentUser
+    setCurrentUser,
 } from './location';
 import RestClient from '../../utilities/RestClient';
 import {
-    ToastActionsCreators
+    ToastActionsCreators,
 } from 'react-native-redux-toast';
 //import { destroySocketClient } from '../../utilities/SocketClient';
 import {
-    cancelAllLocalNotifications
+    cancelAllLocalNotifications,
 } from '../../utilities/PushNotification';
 import axios from "axios";
 
@@ -56,78 +56,78 @@ export const SET_ORDERED_DATA = "SET_ORDERED_DATA";
 // Action Creators
 export const CONSUMER_SIGNUP = (data) => ({
     type: REGISTER_NEW_USER,
-    data
+    data,
 });
 export const VERIFY_PHONE = (data) => ({
     type: PHONE_VERIFICATION,
-    data
+    data,
 });
 export const LOGIN = (data) => ({
     type: USER_LOGIN,
-    data
+    data,
 });
 export const LOG_OUT_SUCCESS = () => ({
-    type: LOG_OUT
+    type: LOG_OUT,
 });
 export const FORGOT_PASSWORD_SUCCESS = (data) => ({
     type: FORGOT_PASSWORD,
-    data
+    data,
 });
 export const OTP_VERIFY_SUCCESS = (data) => ({
     type: OTP_VERIFY,
-    data
+    data,
 });
 export const CONSUMER_SIGNUP_PHONE_VERICATION = (data) => ({
     type: CONSUMER_SIGNUP_PHONE,
-    data
+    data,
 });
 export const setDeviceToken = (data) => ({
     type: DEVICE_TOKEN,
-    data
+    data,
 });
 export const GET_DRIVER = (data) => ({
     type: GET_DRIVER_DATA,
-    data
+    data,
 });
 export const GET_DRIVER_STATUS = (data) => ({
     type: GET_DRIVER_DATA_STATUS,
-    data
+    data,
 });
 export const NAVIGATE_DRIVER_FORM = (data) => ({
     type: NAVIGATE_TO_DRIVER_FORM,
-    data
+    data,
 });
 export const DRIVER_AVAILABILITY = (data) => ({
     type: DRIVER_AVAILABILITY_STATUS,
-    data
+    data,
 });
 export const DRIVER_FORM_NAVIGATION = (data) => ({
     type: DRIVER_FORM_NAV,
-    data
+    data,
 });
 export const GET_CITIES_LIST = (data) => ({
     type: CITIES_LIST,
-    data
+    data,
 });
 export const GET_CERTIFICATES_LIST = (data) => ({
     type: CERTIFICATES_LIST,
-    data
+    data,
 });
 export const GET_EXPERIENCETYPE_LIST = (data) => ({
     type: EXPERIENCETYPE_LIST,
-    data
+    data,
 });
 export const GET_VEHICLETYPE_LIST = (data) => ({
     type: VEHICLETYPE_LIST,
-    data
+    data,
 });
 export const GET_VEHICLECOMPANY_LIST = (data) => ({
     type: VEHICLECOMPANY_LIST,
-    data
+    data,
 });
 export const GET_VEHICLEMODAL_LIST = (data) => ({
     type: VEHICLEMODAL_LIST,
-    data
+    data,
 });
 
 //perform api's related to user
@@ -148,7 +148,7 @@ export const consumerSignup = (data, nav) => {
         phone: data.phone && data.phone.trim(),
         agree: agreeTerms,
         deviceToken: data.deviceToken,
-        role: data.role
+        role: data.role,
     }
     let deviceDetails = {
         deviceType: Platform.OS === "ios" ? "ios" : "android",
@@ -166,30 +166,30 @@ export const consumerSignup = (data, nav) => {
                 if (result.data.emailVerified == 0 && result.data.phoneVerified == 0) {
                     dispatch(CONSUMER_SIGNUP_PHONE_VERICATION({
                         phone: result.data.phone,
-                        email: result.data.email
+                        email: result.data.email,
                     }));
 
                     if (result.data.phoneVerified == 0) {
                         dispatch({
                             type: 'PHONEVERIFICATION_VISIBILITY',
-                            visibility: true
+                            visibility: true,
                         })
                     } else if (result.data.emailVerified == 0) {
                         dispatch({
                             type: 'EMAILVERIFICATION_VISIBILITY',
-                            visibility: true
+                            visibility: true,
                         })
                     }
 
                 } else if (result.data.emailVerified == 0) {
                     dispatch({
                         type: 'EMAILVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else if (result.data.phoneVerified == 0) {
                     dispatch({
                         type: 'PHONEVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else if (result.data) {
                     if (result.data.role == "CUSTOMER") {
@@ -206,7 +206,7 @@ export const consumerSignup = (data, nav) => {
                             if (result.data.driverStatus == 'pending') {
                                 dispatch({
                                     type: 'FORMSUBMIT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
                             dispatch(LOGIN(result));
@@ -247,7 +247,7 @@ export const phoneVerification = (data, nav) => {
     //console.log('data ********* ',data)
     let requestObject = {
         phone: data.phone,
-        phoneOtp: data.code
+        phoneOtp: data.code,
     }
 
     return dispatch => {
@@ -258,12 +258,12 @@ export const phoneVerification = (data, nav) => {
                 dispatch(stopLoading());
                 dispatch({
                     type: 'PHONEVERIFICATION_VISIBILITY',
-                    visibility: false
+                    visibility: false,
                 })
                 if (result.data && result.data.emailVerified == 0) {
                     dispatch({
                         type: 'EMAILVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else if (result.data && result.data.emailVerified == 1) {
                     if (result.data.role == "CUSTOMER") {
@@ -274,14 +274,14 @@ export const phoneVerification = (data, nav) => {
                         ch({
                             type: 'NEWUSER_VISIBILITY',
                             visibility: true,
-                            token: result.token
+                            token: result.token,
                         })
                         dispatch(NAVIGATE_DRIVER_FORM(result))
                     }
                 } else
                     dispatch({
                         type: 'EMAILVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 //dispatch(ToastActionsCreators.displayInfo(result.message));
             } else {
@@ -329,7 +329,7 @@ export const emailVerification = (data, nav) => {
     //console.log('data ********* ',data)
     let requestObject = {
         emailOtp: data.code,
-        email: data.email && data.email.trim()
+        email: data.email && data.email.trim(),
     }
 
     return dispatch => {
@@ -340,17 +340,17 @@ export const emailVerification = (data, nav) => {
                 dispatch(stopLoading());
                 dispatch({
                     type: 'EMAILVERIFICATION_VISIBILITY',
-                    visibility: false
+                    visibility: false,
                 })
                 if (result.data.phoneVerified == 0) {
                     console.log('inside phone Verification not done ********* ', result.data.phone)
                     dispatch(CONSUMER_SIGNUP_PHONE_VERICATION({
                         phone: result.data.phone,
-                        email: result.data.email
+                        email: result.data.email,
                     }));
                     dispatch({
                         type: 'PHONEVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else {
                     if (result.data.role == "CUSTOMER") {
@@ -360,7 +360,7 @@ export const emailVerification = (data, nav) => {
                         dispatch({
                             type: 'NEWUSER_VISIBILITY',
                             visibility: true,
-                            token: result.token
+                            token: result.token,
                         })
                         dispatch(NAVIGATE_DRIVER_FORM(result))
                     }
@@ -382,7 +382,7 @@ export const emailVerification = (data, nav) => {
 export const resendEmailApi = (data) => {
     //console.log('data ********* ',data)
     let requestObject = {
-        email: data
+        email: data,
     }
 
     return dispatch => {
@@ -431,28 +431,28 @@ export const userLogin = (data, nav,navigationObj) => {
                 if (result.data.emailVerified == 0 && result.data.phoneVerified == 0) {
                     dispatch(CONSUMER_SIGNUP_PHONE_VERICATION({
                         phone: result.data.phone,
-                        email: result.data.email
+                        email: result.data.email,
                     }));
                     if (result.data.phoneVerified == 0) {
                         dispatch({
                             type: 'PHONEVERIFICATION_VISIBILITY',
-                            visibility: true
+                            visibility: true,
                         })
                     } else if (result.data.emailVerified == 0) {
                         dispatch({
                             type: 'EMAILVERIFICATION_VISIBILITY',
-                            visibility: true
+                            visibility: true,
                         })
                     }
                 } else if (result.data.emailVerified == 0) {
                     dispatch({
                         type: 'EMAILVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else if (result.data.phoneVerified == 0) {
                     dispatch({
                         type: 'PHONEVERIFICATION_VISIBILITY',
-                        visibility: true
+                        visibility: true,
                     })
                 } else if (result.data) {
                     if (result.data.role == "CUSTOMER") {
@@ -476,7 +476,7 @@ export const userLogin = (data, nav,navigationObj) => {
                             if (result.data.driverStatus == 'pending') {
                                 dispatch({
                                     type: 'FORMSUBMIT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
 
@@ -515,7 +515,7 @@ export const userDriverMediateForm = (data) => {
             uri: data.profilePic.path,
             name: data.profilePic.fileName,
             filename: data.profilePic.fileName,
-            type: data.profilePic.mime
+            type: data.profilePic.mime,
         });
     } else {
         body.append('profilePic', data.profilePic)
@@ -529,7 +529,7 @@ export const userDriverMediateForm = (data) => {
                 uri: element.uri,
                 name: element.fileName,
                 filename: element.fileName,
-                type: element.type
+                type: element.type,
             })
         } else {
             body.append("experiencePic", element)
@@ -549,7 +549,7 @@ export const userDriverMediateForm = (data) => {
         if (data.Experience[key].title && data.Experience[key].duration)
             arr1.push({
                 type: data.Experience[key].title,
-                duration: data.Experience[key].duration
+                duration: data.Experience[key].duration,
             });
     }
     body.append('experiences', JSON.stringify(arr1));
@@ -567,7 +567,7 @@ export const userDriverMediateForm = (data) => {
         if (data.selectedExperienceItems[key])
             certificateArray.push({
                 title: data.selectedExperienceItems[key],
-                isSelected: true
+                isSelected: true,
             });
     }
     body.append('certificates', JSON.stringify(certificateArray));
@@ -658,7 +658,7 @@ export const userDriverForm = (data) => {
             uri: data.profilePic.path,
             name: data.profilePic.fileName,
             filename: data.profilePic.fileName,
-            type: data.profilePic.mime
+            type: data.profilePic.mime,
         });
     } else {
         body.append('profilePic', data.profilePic)
@@ -672,7 +672,7 @@ export const userDriverForm = (data) => {
                 uri: element.uri,
                 name: element.fileName,
                 filename: element.fileName,
-                type: element.type
+                type: element.type,
             })
         } else {
             body.append("experiencePic", element);
@@ -693,7 +693,7 @@ export const userDriverForm = (data) => {
         if (data.Experience[key].title && data.Experience[key].duration)
             arr1.push({
                 type: data.Experience[key].title,
-                duration: data.Experience[key].duration
+                duration: data.Experience[key].duration,
             });
     }
     body.append('experiences', JSON.stringify(arr1));
@@ -711,7 +711,7 @@ export const userDriverForm = (data) => {
         if (data.selectedExperienceItems[key])
             certificateArray.push({
                 title: data.selectedExperienceItems[key],
-                isSelected: true
+                isSelected: true,
             });
     }
     body.append('certificates', JSON.stringify(certificateArray));
@@ -770,7 +770,7 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
             uri: data.vehicleImage.uri,
             name: data.vehicleImage.filename,
             filename: data.vehicleImage.filename,
-            type: data.vehicleImage.type
+            type: data.vehicleImage.type,
         });
     } else {
         body.append('addVehicleImage', "")
@@ -782,7 +782,7 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
             uri: data.LicenceImage.uri,
             name: data.LicenceImage.filename,
             filename: data.LicenceImage.filename,
-            type: data.LicenceImage.type
+            type: data.LicenceImage.type,
         });
     } else {
         body.append('license', "")
@@ -792,7 +792,7 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
             uri: data.InsuranceImage.uri,
             name: data.InsuranceImage.filename,
             filename: data.InsuranceImage.filename,
-            type: data.InsuranceImage.type
+            type: data.InsuranceImage.type,
         });
     } else {
         body.append('insurance', "")
@@ -802,7 +802,7 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
             uri: data.Background.uri,
             name: data.Background.filename,
             filename: data.Background.filename,
-            type: data.Background.type
+            type: data.Background.type,
         });
     } else {
         body.append('background', "")
@@ -812,7 +812,7 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
             uri: data.DriverExtract.uri,
             name: data.DriverExtract.filename,
             filename: data.DriverExtract.filename,
-            type: data.DriverExtract.type
+            type: data.DriverExtract.type,
         });
     } else {
         body.append('abstract', "")
@@ -852,13 +852,13 @@ export const userDriverSecondForm = (data, saveState, onSubmitform) => {
                             if (result.data.driverStatus == 'pending') {
                                 dispatch({
                                     type: 'FORMSUBMIT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
                             if (result.data.driverStatus == 'rejected') {
                                 dispatch({
                                     type: 'FORMREJECT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
                         }
@@ -900,7 +900,7 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
             uri: data.vehicleImage.uri,
             name: data.vehicleImage.filename,
             filename: data.vehicleImage.filename,
-            type: data.vehicleImage.type
+            type: data.vehicleImage.type,
         });
     } else {
         body.append('addVehicleImage', "")
@@ -910,7 +910,7 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
             uri: data.LicenceImage.uri,
             name: data.LicenceImage.filename,
             filename: data.LicenceImage.filename,
-            type: data.LicenceImage.type
+            type: data.LicenceImage.type,
         });
     } else {
         body.append('license', "")
@@ -920,7 +920,7 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
             uri: data.InsuranceImage.uri,
             name: data.InsuranceImage.filename,
             filename: data.InsuranceImage.filename,
-            type: data.InsuranceImage.type
+            type: data.InsuranceImage.type,
         });
     } else {
         body.append('insurance', "")
@@ -930,7 +930,7 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
             uri: data.Background.uri,
             name: data.Background.filename,
             filename: data.Background.filename,
-            type: data.Background.type
+            type: data.Background.type,
         });
     } else {
         body.append('background', "")
@@ -940,7 +940,7 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
             uri: data.DriverExtract.uri,
             name: data.DriverExtract.filename,
             filename: data.DriverExtract.filename,
-            type: data.DriverExtract.type
+            type: data.DriverExtract.type,
         });
     } else {
         body.append('abstract', "")
@@ -966,13 +966,13 @@ export const userDriverSecondMediateForm = (data, saveState, onSubmitform) => {
                             if (result.data.driverStatus == 'pending') {
                                 dispatch({
                                     type: 'FORMSUBMIT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
                             if (result.data.driverStatus == 'rejected') {
                                 dispatch({
                                     type: 'FORMREJECT_VISIBILITY',
-                                    visibility: true
+                                    visibility: true,
                                 })
                             }
                         }
@@ -1069,7 +1069,7 @@ export const forgotPassword = (data) => {
     return dispatch => {
         dispatch(startLoading());
         RestClient.post("users/forgotPassword", {
-            email: data.email && data.email.trim()
+            email: data.email && data.email.trim(),
         }).then((result) => {
             console.log('result forgot ****** ', result)
             if (result.status === 1) {
@@ -1078,11 +1078,11 @@ export const forgotPassword = (data) => {
                 dispatch(FORGOT_PASSWORD_SUCCESS(data.email))
                 dispatch({
                     type: 'FORGOT_PASSWORD_VISIBILITY',
-                    visibility: false
+                    visibility: false,
                 })
                 dispatch({
                     type: 'OTP_VERIFICATION_VISIBILITY',
-                    visibility: true
+                    visibility: true,
                 })
 
             } else {
@@ -1105,7 +1105,7 @@ export const otpVerification = (data) => {
         dispatch(startLoading());
         RestClient.post("users/otpMatch", {
             otp: data.code,
-            email: data.email && data.email.trim()
+            email: data.email && data.email.trim(),
         }).then((result) => {
             console.log('result otp ****** ', result)
             if (result.status === 1) {
@@ -1113,11 +1113,11 @@ export const otpVerification = (data) => {
                 dispatch(OTP_VERIFY_SUCCESS(data.code))
                 dispatch({
                     type: 'OTP_VERIFICATION_VISIBILITY',
-                    visibility: false
+                    visibility: false,
                 })
                 dispatch({
                     type: 'RESET_PASSWORD_VISIBILITY',
-                    visibility: true
+                    visibility: true,
                 })
             } else {
                 dispatch(stopLoading());
@@ -1132,7 +1132,7 @@ export const otpVerification = (data) => {
 export const resendForgotApi = (data) => {
     //console.log('data ********* ',data)
     let requestObject = {
-        email: data
+        email: data,
     }
 
     return dispatch => {
@@ -1162,14 +1162,14 @@ export const resetPassword = (data) => {
         RestClient.post("users/resetPassword", {
             email: data.email && data.email.trim(),
             password: data.password.value,
-            otp: data.otp
+            otp: data.otp,
         }).then((result) => {
             console.log('result otp ****** ', result)
             if (result.status === 1) {
                 dispatch(stopLoading());
                 dispatch({
                     type: 'RESET_PASSWORD_VISIBILITY',
-                    visibility: false
+                    visibility: false,
                 })
                 dispatch(ToastActionsCreators.displayInfo(result.message));
             } else {
@@ -1192,7 +1192,7 @@ export const availibilityStatus = (data, token) => {
     let requestObject = {
         "status": data.status,
         "isHelper": data.isHelper,
-        "isMobileHandler": data.isMobileHandler
+        "isMobileHandler": data.isMobileHandler,
     }
     console.log('rquest object  availibility Status ****** ', requestObject)
     return dispatch => {
@@ -1276,7 +1276,7 @@ export const get_New_test = (url, data) => {
 
                     dispatch({
                         type: 'SET_ORDER_STATE',
-                        data: result.data
+                        data: result.data,
                     });
 
                     fulfill(result);
@@ -1315,7 +1315,7 @@ export const get_order_History = (url, data) => {
 
                     dispatch({
                         type: 'SET_ORDER_HISTORY',
-                        data: result.data
+                        data: result.data,
                     });
 
                     fulfill();
@@ -1353,7 +1353,7 @@ export const acceptOrder = (data) => {
 
                     dispatch({
                         type: 'SET_ACCEPTED_OREDERDATA',
-                        data: result.data
+                        data: result.data,
                     });
 
                     fulfill(result.data);
@@ -1622,16 +1622,16 @@ export const scheduledOrder = (data) => {
 
                     dispatch({
                         type: 'SET_START_ORDERDATA',
-                        data: result.data
+                        data: result.data,
                     });
                     dispatch({
                         type: 'NEXT_PICKUP',
-                        data: result.data ? result.data : []
+                        data: result.data ? result.data : [],
                     });
 
                     dispatch({
                         type: 'SET_PICKUPDATA',
-                        data: result
+                        data: result,
                     });
 
                     //	dispatch({type:'SET_PICKUPDATA',data:{done:result.done}});
@@ -1707,7 +1707,7 @@ export const setOrderedData = (item) => {
     return dispatch => {
         dispatch({
             type: 'SET_ORDERDATA',
-            data: item
+            data: item,
         });
     }
 }
@@ -1716,7 +1716,7 @@ export const setAccpetedData = (item) => {
     return dispatch => {
         dispatch({
             type: 'SET_ACCEPTED_OREDERDATA',
-            data: item
+            data: item,
         });
     }
 }
@@ -1758,43 +1758,43 @@ export default function reducer(state = initialState, action) {
         case REGISTER_NEW_USER:
             return {
                 ...state,
-                userData: action.data
+                userData: action.data,
             };
 
         case CONSUMER_SIGNUP_PHONE:
             return {
                 ...state,
-                phone: action.data
+                phone: action.data,
             };
 
         case USER_LOGIN:
             return {
                 ...state,
-                userData: action.data
+                userData: action.data,
             };
 
         case FORGOT_PASSWORD:
             return {
                 ...state,
-                email: action.data
+                email: action.data,
             };
 
         case OTP_VERIFY:
             return {
                 ...state,
-                otp: action.data
+                otp: action.data,
             };
 
         case DEVICE_TOKEN:
             return {
                 ...state,
-                deviceToken: action.data
+                deviceToken: action.data,
             }
 
         case GET_DRIVER_DATA:
             return {
                 ...state,
-                driverData: action.data
+                driverData: action.data,
             };
         case GET_DRIVER_DATA_STATUS:
             newstate.newdriverStatus = action.data.data.driverStatus;
@@ -1803,39 +1803,39 @@ export default function reducer(state = initialState, action) {
         case NAVIGATE_TO_DRIVER_FORM:
             return {
                 ...state,
-                userData: null
+                userData: null,
             };
 
         case DRIVER_FORM_NAV:
             return {
                 ...state,
-                driverData: action.data
+                driverData: action.data,
             };
 
         case DRIVER_AVAILABILITY_STATUS:
             return {
                 ...state,
-                driverAvailabilityStatus: action.data.availableStatus
+                driverAvailabilityStatus: action.data.availableStatus,
             };
 
         case CITIES_LIST:
             return {
                 ...state,
-                citiesList: action.data
+                citiesList: action.data,
             };
         case CERTIFICATES_LIST:
             return {
                 ...state,
-                certificatesList: action.data
+                certificatesList: action.data,
             };
 
         case LOG_OUT:
             return {
                 ...initialState,
-                deviceToken: state.deviceToken
+                deviceToken: state.deviceToken,
             };
         case SET_ORDERED_DATA:
-            return { ...initialState, orderDetails: action.data };
+            return { ...state, orderDetails: action.data };
 
         default:
             return state;

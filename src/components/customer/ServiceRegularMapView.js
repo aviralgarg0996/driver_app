@@ -1,3 +1,6 @@
+/* eslint-disable eqeqeq */
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -119,11 +122,13 @@ class ServiceRegularMapView extends Component<{}> {
   }
 
   vehicalList(item) {
-    console.log(item);
+
     var width = 100 / this.props.state.FilteredTransportArray.length;
     return (
       <View style={[{ backgroundColor: Constants.Colors.WhiteSmoke, height: Constants.BaseStyle.DEVICE_HEIGHT / 100 * 13, width: Constants.BaseStyle.DEVICE_WIDTH / 100 * width }]}>
-        <TouchableOpacity onPress={() => { this.setActiveTransport(item.tag) }}>
+        <TouchableOpacity onPress={() => {
+
+this.setActiveTransport(item.tag) }}>
           <View style={{ alignItems: 'center', backgroundColor: item.backgroundColor, borderBottomColor: item.borderBottomColor, borderBottomWidth: item.borderBottomWidth }}>
             <Text style={[styles.transportCostStyle]}>{item.cost}</Text>
             <Image source={{ uri: item.displayimg }} style={[styles.transportIcons, { alignItems: 'center' }]} resizeMode={'contain'} />
@@ -135,6 +140,7 @@ class ServiceRegularMapView extends Component<{}> {
   }
   setActiveTransport(id) {
     this.props.dispatch({ type: 'ACTIVE_VEHICLE_FILTER', tagid: id });
+   
   }
 
 
@@ -142,7 +148,6 @@ class ServiceRegularMapView extends Component<{}> {
 
 
   render() {
-    console.log("changed");
     let { height } = this.props;
     navigate = this.props.navigation;
 
@@ -150,9 +155,10 @@ class ServiceRegularMapView extends Component<{}> {
 
     this.props.state.markerPositions.map((marker, i) => {
 
+      // eslint-disable-next-line eqeqeq
       if (marker.title != '')
-        newRegion = marker.coordinates;
-    })
+        {newRegion = marker.coordinates;}
+    });
 
 
     wayPoints = [];

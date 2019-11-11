@@ -92,7 +92,7 @@ const initialState = {
   PICKUPDATEUTC: new Date().setHours(0,0,0,0),
   Delivery_type_usf:Delivery_Type_USF.REGULAR,
   CountryCode: 'CA',//'CA',//  
-
+//  CountryCode: 'IN',
   TransportArr: [
     {
       tag: '1', displayimg: Constants.Images.customer.bike, imgsource: Constants.Images.customer.bike,

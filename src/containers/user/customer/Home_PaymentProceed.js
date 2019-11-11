@@ -84,8 +84,11 @@ class Home_PaymentProceed extends Component<{}> {
   }
 
   onClickPay() {
+
     let { navigate } = this.props.navigation;
     if (this.state.ActiveButton) {
+      navigate('PaymentSuccess');
+
       //this.props.dispatch(ToastActionsCreators.displayInfo('Your Payment has been completed ...'));
       if (this.props.state.Orders.orderId || this.props.state.InvoiceData.orderId) {
         this.checkPaymentInfo()
