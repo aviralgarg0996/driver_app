@@ -334,7 +334,7 @@ class Home_ServicesItemsCourier extends Component<{}> {
         .then((arr1) => {
           this.props.dispatch(stopLoading())
           this.props.dispatch({ type: 'SET_VEHICLECOST', _data: arr1.data, id: 0 });
-          navigate('UrgencyForCourier');
+          this.props.navigation.navigate('UrgencyForCourier');
         })
         .catch((error) => {
           this.props.dispatch(stopLoading())

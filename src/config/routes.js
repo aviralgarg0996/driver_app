@@ -357,6 +357,8 @@ export default routes = {
               Orders_Canceled: { screen: Orders_Canceled },
               Orders_Drafts: { screen: Orders_Drafts },
               Orders_Delivered: { screen: Orders_Delivered },
+              Home_SelectDriver: { screen: Home_SelectDriver },
+           
 
             }, { headerMode: "none", }),
             navigationOptions: ({ navigation }) => ({

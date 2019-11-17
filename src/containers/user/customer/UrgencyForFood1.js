@@ -1,3 +1,5 @@
+/* eslint-disable react-native/no-inline-styles */
+/* eslint-disable prettier/prettier */
 /**
  * Sample React Native App
  * https://github.com/facebook/react-native
@@ -53,6 +55,8 @@ class UrgencyForFood1 extends Component<{}> {
       isVisible: false,
 
     }
+
+
   }
 
 
@@ -279,7 +283,7 @@ class UrgencyForFood1 extends Component<{}> {
         <HeaderBackground navigation={navigate} goBack={goBack} />
         <HeaderMenu navigation={navigate} catId={2} />
         <View style={{ flex: 1 }}>
-          {/* {<ServiceRegularMapView navigation={navigate} height={90} showList={true} />} */}
+          {<ServiceRegularMapView navigation={navigate} height={290} showList={true} /> }
           <View style={{  marginBottom: scaleHeight(100) }}>
         
           <ShadowButton
@@ -293,7 +297,7 @@ class UrgencyForFood1 extends Component<{}> {
             <FlatList data={this.props.state.FilteredTransportArray} renderItem={({ item }) => this.vehicalList(item)} horizontal={true} />
           </View>
         </View>
-        <Modal animationType={"fade"} transparent={true} visible={this.state.isVisible} onRequestClose={() => { this.setState({ isVisible: false }) }}>
+        <Modal animationType={'fade'} transparent={true} visible={this.state.isVisible} onRequestClose={() => { this.setState({ isVisible: false }) }}>
           <View style={styles.headerColor}>
             <Text style={styles.headText}>Content</Text>
             <TouchableOpacity onPress={() => { this.setState({ isVisible: false }) }}>

@@ -30,7 +30,6 @@ import ShadowButton from '../../../components/common/ShadowButton';
 class Home_ServicesDoc extends Component<{}> {
   constructor(props) {
     super(props);
-    Alert.alert("text")
     this.state = {
       opacity: 1,
       activecolor: '#C3C1C0',

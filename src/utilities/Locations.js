@@ -64,7 +64,7 @@ async function androidCheck(store, type) {
            // store.dispatch(LocationActions.locationError(true));
           },
           {
-            enableHighAccuracy: true, timeout: 20000, maximumAge: 0, distanceFilter: 50
+            enableHighAccuracy: true, timeout: 20000, maximumAge: 0, distanceFilter: 2
           }
         );
       }

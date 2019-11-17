@@ -99,6 +99,7 @@ class Home_Food extends Component<{}> {
       .then((response) =>
         response.json())
       .then((arr) => {
+        console.log("arr====================>",arr)
         this.props.dispatch(stopLoading())
         if (arr.status && arr.data) {
           _.each(arr.data, function (element) {
@@ -124,14 +125,12 @@ class Home_Food extends Component<{}> {
 
         }
 
-
+        console.log("furnitureArr================>",furnitureArray)
         dispatch({ type: 'SET_FURNITURE_UNITS', funData: furnitureArray });
         navigate('Home_ServicesItemsFurniture');
 
 
-        //    dispatch({type : 'SET_FOODRANGE', range : arr.data[0].dgUnit ,_deliverytype:1,_weight:arr.data[0].weight});
-        //  navigate('Home_ServicesDoc');
-      }).catch(error => {
+        }).catch(error => {
         console.log("error=> ", error)
         this.props.dispatch(stopLoading());
       });;
