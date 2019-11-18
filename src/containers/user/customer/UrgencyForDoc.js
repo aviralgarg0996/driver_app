@@ -417,7 +417,15 @@ class UrgencyForDoc extends Component<{}> {
         }
       }
     });
-
+console.log("datarequest=======>",JSON.stringify({
+  'quantity': strItems,
+  'weight': strWeight,
+  'service_type': 2,
+  'delivery_type_usf': this.props.state.Delivery_type_usf,
+  'time_frame': 1,
+  'pickup': pickup,
+  'drop_location': drop,
+}))
     fetch(CustomerConnection.getTempUrl() + 'place-order/vehiclecalculation/', {
 
       method: 'POST',

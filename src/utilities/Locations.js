@@ -1,9 +1,8 @@
+/* eslint-disable prettier/prettier */
 'use strict';
-import React, { Component } from "react";
-import { Alert, InteractionManager, Platform } from "react-native";
+import { Platform } from 'react-native';
 // import Permissions from 'react-native-permissions';
 import * as LocationActions from '../redux/modules/location';
-import { startLoading, stopLoading } from '../redux/modules/app';
 import Constants from '../constants';
 import Geocoder from 'react-native-geocoder';
 import { PermissionsAndroid } from 'react-native';
@@ -13,7 +12,7 @@ import Geolocation from 'react-native-geolocation-service';
 Geocoder.fallbackToGoogle(Constants.GoogleAPIKey);
 
 async function requestCameraPermission(store, type) {
-  console.log("1111")
+  console.log('1111')
   // let coords='{"mocked":false,"timestamp":1549570060000,"coords":{"speed":0,"heading":0,"accuracy":20,"longitude":-123.1207,"altitude":0,"latitude":49.2827}}'
   // type(JSON.parse(coords))
   // console.log("111122",coords)
@@ -45,7 +44,7 @@ async function androidCheck(store, type) {
       try {
 
         Geolocation.getCurrentPosition(function (e) {
-          console.log("success in coords", JSON.stringify(e))
+          console.log('success in coords', JSON.stringify(e))
           type(e)
           store.dispatch(LocationActions.setDetails(e));
         }, function (e) {
@@ -54,17 +53,20 @@ async function androidCheck(store, type) {
 
         Geolocation.watchPosition(
           (success) => {
+
+            console.log(success);
+
             store.dispatch(LocationActions.setDetails(success));
 
           },
-          (error) => {
+          () => { 
             // alert('stopLoading errior'+error);
        //     store.dispatch(stopLoading())
          //   store.dispatch(LocationActions.setDetails(null));
            // store.dispatch(LocationActions.locationError(true));
           },
           {
-            enableHighAccuracy: true, timeout: 20000, maximumAge: 0, distanceFilter: 2
+            enableHighAccuracy: true, timeout: 20000, maximumAge: 1, distanceFilter:1,
           }
         );
       }
@@ -81,7 +83,7 @@ async function androidCheck(store, type) {
 }
 async function iosCheck(store, type) {
   Geolocation.getCurrentPosition(function (e) {
-    console.log("success in coords", JSON.stringify(e))
+    console.log('success in coords', JSON.stringify(e))
     type(e)
     store.dispatch(LocationActions.setDetails(e));
   }, function (e) {
@@ -95,7 +97,7 @@ export function checkPermissions(store, type) {
 }
 
 
-export function checkPermissions1(store, type) {
+export function checkPermissions1() {
   // Permissions.getPermissionStatus('location', 'whenInUse').then(response => {
   //   if (response === "authorized") {
   //     InteractionManager.runAfterInteractions(() => {
@@ -139,7 +141,7 @@ export function checkPermissions1(store, type) {
   // });
 }
 
-export function requestPermissions(store, type) {
+export function requestPermissions() {
   // Permissions.requestPermission('location', 'whenInUse').then(response => {
   //   if (response !== "authorized") {
   //     store.dispatch(LocationActions.setDetails(null));

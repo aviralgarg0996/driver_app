@@ -65,6 +65,10 @@ class mapViewOnly extends Component {
         markerAdded = true;
       } else {
         console.log('else ___ part');
+
+       
+    
+
         HiddenMarker.moveMarkertoCurrenentPosition(item);
         //   HiddenMarker.hidemarker(item);
       }
@@ -118,7 +122,7 @@ class mapViewOnly extends Component {
       testMap: [],
       markerList: markerList,
     };
-    this.initialPosition = this.state.initialPosition;
+  //  this.initialPosition = this.state.initialPosition;
     this.markerPositionLength = this.props.state.markerPositions.length;
   }
 
@@ -149,9 +153,19 @@ data.customerid=this.props.user.userData.data._id;
     setTimeout(() => {
       socketUpdate.customerSocket(requestObject);
     }, 500);
+
+
+    setInterval(() => {
+      // eslint-disable-next-line no-alert
+      HiddenMarker.rotateFront(driverMap);
+    }, 3000);
+
   }
 
   shouldComponentUpdate = (nextProps, nextState) => {
+
+    console.log("sdsdsdsdsdsds");
+
  let tempCoord = _.where(nextProps.state.markerPositions, {title: 'Pickup 1'});
  console.log( tempCoord);
 if (tempCoord.length > 0 ){
@@ -199,7 +213,7 @@ return true;
       }
     });
 
-    if (newRegion == null) newRegion = this.state.initialPosition;
+   // if (newRegion == null) newRegion = this.state.initialPosition;
 
     if (wayPoints.length > 0) {
       origin = wayPoints[0];

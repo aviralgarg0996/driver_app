@@ -199,7 +199,7 @@ class CustomerHome extends Component {
           styles.container,
           {backgroundColor: Constants.Colors.BackgroundBlue},
         ]}>
-        <HeaderBackground navigation={this.props.navigation} />
+        <HeaderBackground navigation={navigate} />
         <View
           style={{
             width: Constants.BaseStyle.DEVICE_WIDTH,

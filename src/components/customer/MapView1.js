@@ -153,12 +153,9 @@ class CustomerMapView extends Component {
     switch (data.eventType) {
       case 'customerLatLng':
         if (data.driverList.length > 0) {
-          try{
-          this.updateDriverLoc(data);
-          }
-          catch(ex){
-            
-          }
+          try {
+            this.updateDriverLoc(data);
+          } catch (ex) {}
           this.props.onDriverDataGet(data.driverList);
         }
 
@@ -184,8 +181,13 @@ class CustomerMapView extends Component {
       soccketCB: this.socketUpdateCB,
     };
 
-    if (this.props.user.userData)
-      {socketUpdate.getDriverSelectScreen({
+    setInterval(() => {
+      // eslint-disable-next-line no-alert
+     // hidemarker.rotateFront(driverMap);
+    }, 3000);
+
+    if (this.props.user.userData) {
+      socketUpdate.getDriverSelectScreen({
         customerid: this.props.user.userData.data._id,
         lat:
           this.props.locationData.currentLocation != null
@@ -205,7 +207,9 @@ class CustomerMapView extends Component {
           : this.props.user.orderDetails.orders[0].pickup[0].pickup_point.split(
               ',',
             )[1],
-      });}
+        vehicle_category: this.props.state.vehicleID,
+      });
+    }
 
     console.log(this.props.user.userData);
     updateMarker = true;
@@ -256,15 +260,18 @@ class CustomerMapView extends Component {
       marker.push(element.coordinates);
     });
 
-    if (data.length == 0) {return;}
+    if (data.length == 0) {
+      return;
+    }
 
     //    alert("gggggg")
 
-    if (this.map)
-      {this.map.fitToCoordinates(marker, {
+    if (this.map) {
+      this.map.fitToCoordinates(marker, {
         edgePadding: DEFAULT_PADDING,
         animated: true,
-      });}
+      });
+    }
   }
 
   selectDriver = item => {
@@ -562,8 +569,6 @@ class CustomerMapView extends Component {
     //LONGITUDE_DELTA = region.longitude
     //  this.setState({ region });
   };
-
-
 
   render() {
     wayPoints = [];

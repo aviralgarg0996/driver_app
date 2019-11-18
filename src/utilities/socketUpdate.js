@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable radix */
 /* eslint-disable no-unused-vars */
 import openSocket from 'socket.io-client';
 
@@ -13,6 +15,12 @@ export default {
           coordinates: [requestObj.lng, requestObj.lat],
           type: 'Point',
         },
+        speed: requestObj.speed,
+        heading: requestObj.heading,
+        accuracy: requestObj.accuracy,
+        altitude: requestObj.altitude,
+        mocked: requestObj.mocked,
+        timestamp: requestObj.timestamp,
       });
       return;
     } else {
@@ -32,11 +40,11 @@ export default {
       );
       socket.on('latlng-message-response', data => {
         // eslint-disable-next-line no-alert
-        alert(JSON.stringify(data));
+        console.log(JSON.stringify(data));
       });
       socket.io.on('connection', data => {
         // eslint-disable-next-line no-alert
-        alert(JSON.stringify(data));
+        console(JSON.stringify(data));
       });
       socket.emit('send-ltlng', {
         driverid: requestObj.driverid,
@@ -176,6 +184,47 @@ export default {
         //  request.socketUpdateCallback(callbackData);
       });
 
+      var d = [
+      /*  '5bda93c59f19ad5e722d8ca3',
+        '5bff9d7932e05007b67ee494',
+        '5c00adbf56b711154419f236',
+        '5c124b701a0dc253bdf4529b',
+        '5c63e76b67bc330011b0485b',
+        '5c887a01126d100011a31b6f',
+        '5c89e6bf126d100011a31c10',
+        '5c9ee0a12529940011d80e4f',
+        '5cad79402529940011d80f32',*/
+      ];
+
+      // customerSocketObj.emit('send-customer-lctn', data);
+
+      console.log(request);
+
+      d.map(driverid => {
+        customerSocketObj.emit('send-ltlng', {
+          driverid: driverid,
+          geometry: {
+            coordinates: [
+              request.longitude +
+                Math.random() *
+                  0.05 *
+                  [-1, 1][parseInt(Math.random() * 100, 10) % 2],
+              request.latitude +
+                Math.random() *
+                  0.05 *
+                  [-1, 1][parseInt(Math.random() * 100, 10) % 2],
+            ],
+            type: 'Point',
+          },
+          speed: 56,
+          heading: 45,
+          accuracy: 12,
+          altitude: 34,
+          mocked: true,
+          timestamp: new Date().getTime(),
+        });
+      });
+
       customerSocketObj.io.on('connect', data => {
         // alert(customerSocketObj); // false
       });
@@ -198,6 +247,49 @@ export default {
     if (customerSocketObj) {
       customerSocketObj.emit('send-customer-lctn', data);
     }
+  },
+
+  moveMarkerFotesting: function(data) {
+    var d = [
+      '5bda93c59f19ad5e722d8ca3',
+      '5bff9d7932e05007b67ee494',
+      '5c00adbf56b711154419f236',
+      '5c124b701a0dc253bdf4529b',
+      '5c63e76b67bc330011b0485b',
+      '5c887a01126d100011a31b6f',
+      '5c89e6bf126d100011a31c10',
+      '5c9ee0a12529940011d80e4f',
+      '5cad79402529940011d80f32',
+    ];
+
+    // customerSocketObj.emit('send-customer-lctn', data);
+
+    console.log(request);
+
+    d.map(driverid => {
+      customerSocketObj.emit('send-ltlng', {
+        driverid: driverid,
+        geometry: {
+          coordinates: [
+            request.longitude +
+              Math.random() *
+                0.05 *
+                [-1, 1][parseInt(Math.random() * 100, 10) % 2],
+            request.latitude +
+              Math.random() *
+                0.05 *
+                [-1, 1][parseInt(Math.random() * 100, 10) % 2],
+          ],
+          type: 'Point',
+        },
+        speed: 56,
+        heading: 45,
+        accuracy: 12,
+        altitude: 34,
+        mocked: true,
+        timestamp: new Date().getTime(),
+      });
+    });
   },
 
   getDriverSelectScreen: function(data) {

@@ -18,7 +18,7 @@ import { connect } from 'react-redux';
 //let GOOGLE_MAPS_APIKEY = 'AIzaSyCa2zZ-9wObLwsLh2B63QUcQlnAuYFTB4E'
 let GOOGLE_MAPS_APIKEY = Constants.distanceAPIMatrix;
 import socketUpdate from '../../utilities/socketUpdate';
-import HiddenMarker from '../common/customerMarker'
+import HiddenMarker from '../common/customerMarker';
 let driverMap = {};
 
 let currecntVechile = null;
@@ -46,7 +46,7 @@ class mapViewOnly extends Component {
                 longitudeDelta: 0.5,
             },
 
-        }
+        };
         this.initialPosition = this.state.initialPosition;
 
         this.markerPositionLength = this.props.state.markerPositions.length;
@@ -81,12 +81,12 @@ class mapViewOnly extends Component {
               markerAdded = true;
               }
                else {
-                   console.log("else ___ part")
-                       HiddenMarker.moveMarkertoCurrenentPosition(item)
+                   console.log("else ___ part");
+                       HiddenMarker.moveMarkertoCurrenentPosition(item);
                     //   HiddenMarker.hidemarker(item);
 
                }
-                })
+                });
 
 if (markerAdded)
        this.setState({markerList});
@@ -101,10 +101,10 @@ if (markerAdded)
          switch (data.eventType)
          {
           case 'customerLatLng':
-              try{
+              try {
             this.updateDriverLoc(data,true); 
               }
-              catch(ex){
+              catch (ex){
 
               }
            break;
@@ -114,20 +114,20 @@ if (markerAdded)
            console.log(data.data);
            tempData.driverList = [data.data];
         //   console.log(tempData.driverList);
-        try{
+        try {
         this.updateDriverLoc(tempData);
         }
-        catch(ex){
+        catch (ex){
 
         }
            break;
 
            case 'driverOutSide':
-               console.log('driverOutSide' + '   ' + data.driverList.driver_id )
-               try{
+               console.log('driverOutSide' + '   ' + data.driverList.driver_id );
+               try {
                    HiddenMarker.hidemarker(data.driverList.driver_id);
                }
-               catch(ex){
+               catch (ex){
                    
                }
                    break;
@@ -185,6 +185,9 @@ setTimeout(() => {
  
          
             currecntVechile=nextProps.state.vehicleID;
+
+
+            console.log('nextProps.state.vehicleID' +  nextProps.state.vehicleID);
            
             setTimeout(() => {
 
@@ -193,7 +196,10 @@ setTimeout(() => {
                     customerid:this.props.user.userData.data._id,
                     lat:this.props.locationData.currentLocation != null ? this.props.locationData.currentLocation.coords.latitude : 0,
                     lng: this.props.locationData.currentLocation != null ? this.props.locationData.currentLocation.coords.longitude : 0,
-                    vehicle_type:nextProps.state.vehicleID
+                    vehicle_category:nextProps.state.vehicleID,
+                  //  vehicle_type: 'Medium'
+                    
+                  //  nextProps.state.vehicleID
                     });
                 
             }, 1000);

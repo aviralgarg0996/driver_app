@@ -39,14 +39,16 @@ class SearchPlace extends Component {
       '&key=' +
       Constants.GoogleAPIKey +
       '';
-    console.log(url);
-    if (this.props.locationData.currentLocation != null) {
+
+    //  console.log();
+
+      if (this.props.locationData.currentLocation != null) {
       let locationString =
         '&location=' +
         this.props.locationData.currentLocation.coords.latitude +
         ',' +
         this.props.locationData.currentLocation.coords.longitude;
-      let radius = '&radius=' + 200000; // radius is in meter for now it 200KM
+      let radius = '&radius=' + 50000; // radius is in meter for now it 200KM
       let key = '&key=' + Constants.GoogleAPIKey;
       let strictbounds = '&strictbounds';
       url =
@@ -99,7 +101,10 @@ class SearchPlace extends Component {
       '&key=' +
       Constants.GoogleAPIKey +
       '';
-    console.log(url);
+    
+      console.log(url);
+
+
 
     fetch(url)
       .then(response => response.json())

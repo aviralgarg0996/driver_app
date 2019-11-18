@@ -175,7 +175,13 @@ console.log("-------" +    JSON.stringify(data))
     lat: data.coords.latitude,
     lng: data.coords.longitude,
     distance: 890,
-  }
+    speed: data.coords.speed,
+    heading: data.coords.heading,
+    accuracy: data.coords.accuracy,
+    altitude: data.coords.altitude,
+    mocked: true,
+    timestamp: 1573634046659,
+ };
 
   socketUpdate.driverScoketEvent(requestObject);
   /*RestClient.post_Synch("drivers/savedriverlatlng",requestObject).then((result) => {

@@ -373,11 +373,10 @@ this.props.dispatch(startLoading())
     const { navigate, goBack } = this.props.navigation;
     var arr1 = [];
     var len = this.props.state.DisplayLocationAddress.length;
-    console.log("props",this.props)
+
     this.props.state.DisplayLocationAddress.map((val, i) => {
-      if (!(val.address.indexOf('Choose') == 0)){
+      if (!(val.address.indexOf('Choose') == 0))
         arr1.push(val);
-      }
     });
 
 
@@ -388,7 +387,6 @@ this.props.dispatch(startLoading())
         <HeaderMenu navigation={navigate} catId={2} />
         <View style={{height: scaleHeight(25), backgroundColor: 'transparent'}}/>
         <ScrollView>
-          {console.log("arr1----------------------->",arr1)}
           <FlatList
             data={arr1}
             renderItem={this.itemList.bind(this)}

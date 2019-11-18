@@ -18,18 +18,15 @@ import XLarge from '../../assets/images/customer/Vehicle_icons/Top/small/Xlarge.
 import DeckTruck from '../../assets/images/customer/Vehicle_icons/Top/small/Deck.png';
 import FridgeTruck from '../../assets/images/customer/Vehicle_icons/Top/small/Fridge.png';
 
-
-let vechile={
-"Bike" : Bike,
-"Small" : Small,
-"Medium" : Medium,
-"Large" : Large,
-"XLarge" : XLarge,
-"DeckTruck" : DeckTruck,
-"FridgeTruck" : FridgeTruck,
-
-}
-
+let vechile = {
+  Bike: Bike,
+  Small: Small,
+  Medium: Medium,
+  Large: Large,
+  XLarge: XLarge,
+  DeckTruck: DeckTruck,
+  FridgeTruck: FridgeTruck,
+};
 
 var assignedDriver = 0;
 import _ from 'underscore';
@@ -41,8 +38,8 @@ let mediaUrl = CustomerConnection.mediaURL() + '/';
 this.state.vehicleArray.map((item)=>{
 
     return <MapView.Marker.Animated
-    ref={marker => { driverMap[item.driverId] = marker 
-    
+    ref={marker => { driverMap[item.driverId] = marker
+
     }}
     coordinate={item}
     title={item.title}
@@ -53,7 +50,9 @@ this.state.vehicleArray.map((item)=>{
 
 export default {
   hiddenMarkerList: function() {
-    if (markerList.length > 0) return;
+    if (markerList.length > 0) {
+      return;
+    }
   },
 
   getLatestMarkerList: function() {},
@@ -89,17 +88,55 @@ export default {
         latitude: item.geometry[0].coordinates[1],
         longitude: item.geometry[0].coordinates[0],
       },
-      2000,
+      3000,
     );
+
+    if (item.locationArgs && item.locationArgs[0]) {
+      console.log(item.locationArgs[0].heading);
+    }
 
     if (blankDriverMap[item._id].hidden) {
       blankDriverMap[item._id].markerCMP._component.setNativeProps({
         // latitude: -85,
         // longitude: 180,
         opacity: 1,
+
+        transform: [
+          {
+            rotate:
+              item.locationArgs &&
+              item.locationArgs[0] &&
+              item.LocationArgs[0].heading
+                ? item.LocationArgs[0].heading * -1
+                : '0deg',
+          },
+        ],
       });
 
       blankDriverMap[item._id].hidden = false;
+    } else {
+      console.log(item);
+      if (
+        item.locationArgs &&
+        item.locationArgs[0] &&
+        item.locationArgs[0].heading
+      )
+        blankDriverMap[item._id].markerCMP._component.setNativeProps({
+          // latitude: -85,
+          // longitude: 180,
+          opacity: 1,
+
+          transform: [
+            {
+              rotate:
+                item.locationArgs &&
+                item.locationArgs[0] &&
+                item.locationArgs[0].heading
+                  ? item.locationArgs[0].heading+'deg' 
+                  : '0deg',
+            },
+          ],
+        });
     }
   },
 
@@ -116,7 +153,9 @@ export default {
   },
 
   onLocationChange: function(driverData, data) {
-    if (!data) return;
+    if (!data) {
+      return;
+    }
     driverData._component.animateMarkerToCoordinate(
       {
         latitude: data.latitude,
@@ -151,13 +190,13 @@ export default {
         key={item._id}
         onLayout={this.onLayout}
         tracksViewChanges={false}
-         image={vechile[element.vechilecategory.name]}
+        image={vechile[element.vechilecategory.name]}
         ref={marker => {
           this.markerCMP = marker;
           blankDriverMap[item._id] = {
             markerCMP: this.markerCMP,
             hidden: false,
-          }; 
+          };
         }}
         coordinate={{
           latitude: item.geometry[0].coordinates[1],
@@ -165,10 +204,68 @@ export default {
         }}
         title={item.firstName + ' ' + item.lastName}
         onPress={() => {
-          if (item.onMarkerAction) item.onMarkerAction(item.markerData);
+          if (item.onMarkerAction) {
+            item.onMarkerAction(item.markerData);
+          }
         }}>
-            {/* <Image source={{uri: viechleImagePath}}  style={{height:20,width:20}}/> */}
+        {/* <Image source={{uri: viechleImagePath}}  style={{height:20,width:20}}/> */}
       </MapView.Marker.Animated>
     );
   },
+
+  rotateFront: data => {
+    return;
+    console.log(blankDriverMap['5bda93c59f19ad5e722d8ca3']);
+
+    if (blankDriverMap['5bda93c59f19ad5e722d8ca3']) {
+      var coords =
+        blankDriverMap['5bda93c59f19ad5e722d8ca3'].markerCMP._component.props
+          .coordinate;
+      var deg = bearing(
+        coords.latitude,
+        coords.longitude,
+        coords.latitude,
+        coords.longitude + Math.random() * 0.01,
+      );
+      let locationArgs = [];
+      blankDriverMap[
+        '5bda93c59f19ad5e722d8ca3'
+      ].markerCMP._component.setNativeProps({
+        transform: [
+          {
+            rotate:
+              locationArgs && locationArgs[0] && LocationArgs[0].heading
+                ? LocationArgs[0].heading + 'deg'
+                : '0deg',
+          },
+        ],
+      });
+
+      //      blankDriverMap[driverId].hidden = true;
+    }
+  },
+};
+
+toRadians = degrees => {
+  return (degrees * Math.PI) / 180;
+};
+
+// Converts from radians to degrees.
+toDegrees = radians => {
+  return (radians * 180) / Math.PI;
+};
+
+bearing = (startLat, startLng, destLat, destLng) => {
+  startLat = toRadians(startLat);
+  startLng = toRadians(startLng);
+  destLat = toRadians(destLat);
+  destLng = toRadians(destLng);
+
+  y = Math.sin(destLng - startLng) * Math.cos(destLat);
+  x =
+    Math.cos(startLat) * Math.sin(destLat) -
+    Math.sin(startLat) * Math.cos(destLat) * Math.cos(destLng - startLng);
+  brng = Math.atan2(y, x);
+  brng = toDegrees(brng);
+  return (brng + 360) % 360;
 };

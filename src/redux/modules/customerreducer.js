@@ -1820,7 +1820,7 @@ export default function CustomerReducer(state = initialState, action = {}) {
       furnitureitems = [];
 
       newstate.FurnitureItemList = action.funData;
-      console.log("actioninreducer",action)
+
       //alert(JSON.stringify(furnitureitems));
 
       if (newstate.pickupArr.length >= newstate.dropArr.length) {
@@ -1838,7 +1838,6 @@ export default function CustomerReducer(state = initialState, action = {}) {
         newstate.LocationImgForService = Constants.Images.customer.markerOrange;
       }
       newstate.DisplayLocationAddress = [];
-      console.log("arra1inreducer",arr1)
       newstate.DisplayLocationAddress = arr1;
 
       return newstate;
