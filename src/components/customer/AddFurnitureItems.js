@@ -312,7 +312,7 @@ const styles = StyleSheet.create({
     // padding: Constants.BaseStyle.DEVICE_WIDTH / 100 * 2.6,
     // marginVertical: Constants.BaseStyle.DEVICE_WIDTH*2/100,
     marginBottom:10,
-    width:Constants.DEVICE_WIDTH*0.7,
+    width:Constants.BaseStyle.DEVICE_WIDTH*0.7,
     alignSelf:"center",
     // marginTop:0,
     // marginLeft:0,//(Constants.BaseStyle.DEVICE_WIDTH/100)*10,//10,
