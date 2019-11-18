@@ -22,7 +22,7 @@ import {
 import Background from '../../components/common/Background';
 import Constants from "../../constants";
 
-import {BarChart} from 'react-native-charts-wrapper';
+// import {BarChart} from 'react-native-charts-wrapper';
 
 export default class BarChartReport extends Component<{}> {
   constructor(props){
@@ -74,21 +74,21 @@ export default class BarChartReport extends Component<{}> {
   render() {
 
     return (
-
-              <BarChart
-                style={styles.chart}
-                data={this.state.data}
-                xAxis={this.state.xAxis}
-                animation={{durationX: 2000}}
-                legend={this.state.legend}
-                gridBackgroundColor={processColor('#ffffff')}
-                drawBarShadow={false}
-                drawValueAboveBar={true}
-                drawHighlightArrow={true}
-                onSelect={this.handleSelect.bind(this)}
-                highlights={this.state.highlights}
-                onChange={(event) => console.log(event.nativeEvent)}
-              />
+<View>Bar Chart</View>
+              // <BarChart
+              //   style={styles.chart}
+              //   data={this.state.data}
+              //   xAxis={this.state.xAxis}
+              //   animation={{durationX: 2000}}
+              //   legend={this.state.legend}
+              //   gridBackgroundColor={processColor('#ffffff')}
+              //   drawBarShadow={false}
+              //   drawValueAboveBar={true}
+              //   drawHighlightArrow={true}
+              //   onSelect={this.handleSelect.bind(this)}
+              //   highlights={this.state.highlights}
+              //   onChange={(event) => console.log(event.nativeEvent)}
+              // />
         )
     }
 }

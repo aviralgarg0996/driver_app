@@ -7,7 +7,7 @@ import {
   processColor
 } from 'react-native';
 
-import {BarChart} from 'react-native-charts-wrapper';
+// import {BarChart} from 'react-native-charts-wrapper';
 
 class BarChartScreen extends React.Component {
 
@@ -65,21 +65,21 @@ class BarChartScreen extends React.Component {
       barStyle
     } = this.props;
     return (
-
-          <BarChart
-            style={barStyle}
-            data={this.state.data}
-            xAxis={this.state.xAxis}
-            animation={{durationX: 2000}}
-            legend={this.state.legend}
-            gridBackgroundColor={processColor('#ffffff')}
-            drawBarShadow={false}
-            drawValueAboveBar={true}
-            drawHighlightArrow={true}
-            onSelect={this.handleSelect.bind(this)}
-            highlights={this.state.highlights}
-            onChange={(event) => console.log(event.nativeEvent)}
-          />
+<View>Bar Chart</View>
+          // <BarChart
+          //   style={barStyle}
+          //   data={this.state.data}
+          //   xAxis={this.state.xAxis}
+          //   animation={{durationX: 2000}}
+          //   legend={this.state.legend}
+          //   gridBackgroundColor={processColor('#ffffff')}
+          //   drawBarShadow={false}
+          //   drawValueAboveBar={true}
+          //   drawHighlightArrow={true}
+          //   onSelect={this.handleSelect.bind(this)}
+          //   highlights={this.state.highlights}
+          //   onChange={(event) => console.log(event.nativeEvent)}
+          // />
 
     );
   }
