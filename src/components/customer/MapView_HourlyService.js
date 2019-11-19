@@ -81,45 +81,6 @@ class MapView_HourlyService extends Component<{}> {
   }
 
 
-  // componentDidMount() {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-  //     var lat = position.coords.latitude;
-  //     var long = position.coords.longitude;
-
-  //     var initialRegion = {
-  //       latitude: lat,
-  //       longitude: long,
-  //       latitudeDelta: LATITUDE_DELTA,
-  //       longitudeDelta: LONGITUDE_DELTA,
-  //     }
-
-  //     this.setState({ initialPosition: initialRegion });
-  //     this.setState({ markerPosition: initialRegion });
-  //   },
-  //     (error) => this.setState({ error: error.message }),
-  //     { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
-  //   );
-
-  //   this.watchID = navigator.geolocation.getCurrentPosition((position) => {
-  //     var lat = position.coords.latitude;
-  //     var long = position.coords.longitude;
-
-  //     var lastRegion = {
-  //       latitude: lat,
-  //       longitude: long,
-  //       latitudeDelta: LATITUDE_DELTA,
-  //       longitudeDelta: LONGITUDE_DELTA,
-  //     }
-
-  //     this.setState({ initialPosition: lastRegion });
-  //     this.setState({ markerPosition: lastRegion });
-  //   });
-  // }
-
-
-  // componentWillUnmount() {
-  //   navigator.geolocation.clearWatch(this.watchID);
-  // }
 
 
   searchPlace(_flag) {
@@ -131,41 +92,11 @@ class MapView_HourlyService extends Component<{}> {
       if (lenpick == 1) {
         addFlag = false;
       }
-      /*if(lenpick>1)
-      {
-        if(lenpick==3)
-        {
-          addFlag=false;
-        }
-        else if(lendrop==1 && lenpick==3)
-        {
-          addFlag=false;
-        }
-      }
-      else if (lendrop>1 && lenpick==1)
-      {
-        addFlag=false;
-      }*/
     }
     else if (_flag == 2) {
       if (lendrop == 1) {
         addFlag = false;
       }
-      /*if (lendrop>1)
-      {
-        if(lendrop==3)
-        {
-          addFlag=false;
-        }
-        else if(lenpick==1 && lendrop==3)
-        {
-          addFlag=false;
-        }
-      }
-      else if (lendrop==1 && lenpick>1)
-      {
-        addFlag=false;
-      }*/
     }
 
 
@@ -174,12 +105,7 @@ class MapView_HourlyService extends Component<{}> {
       this.props.dispatch({ type: 'SETPICKDROPFLAG', flag: _flag });
       this.props.dispatch({ type: 'PLACE_FINDER_MODAL_HOURLY', visibility: true });
     }
-    /*else if(lendrop==3 || lenpick==3)
-    {
-      this.props.dispatch(ToastActionsCreators.displayInfo('You can enter max 3 pickup/drop locations.'));
-      this.props.dispatch({type:'PLACE_FINDER_MODAL',visibility:false});
-    }*/
-    else {
+      else {
       this.props.dispatch(ToastActionsCreators.displayInfo('You can enter only one Pickup and Drop address.'));
       this.props.dispatch({ type: 'PLACE_FINDER_MODAL_HOURLY', visibility: false });
     }
@@ -191,7 +117,6 @@ class MapView_HourlyService extends Component<{}> {
   }
 
   CallDatePicker() {
-    //let context = this;
     DatePickerAndroid.open({
       date: new Date(this.props.state.HourlyServiceDate),
     }).then(({ action, year, month, day }) => {
@@ -305,11 +230,11 @@ class MapView_HourlyService extends Component<{}> {
 
     navigate = this.props.navigation;
 
-
+console.log("ths.props",this.props)
     return (
-      <View style={{ flex: 1 }}>
+      <View style={{ flex: 1 ,borderWidth:1}}>
         <View style={[styles.rootContainer]}>
-          {this.props.locationData.showmap.HourlyGetEstimate &&
+          {!this.props.locationData.showmap.HourlyGetEstimate &&
 
 
 

@@ -14,10 +14,7 @@ export default function configureStore() {
      * */
     const store = createStore(
         reducer(),
-        // compose(
-        //     autoRehydrate()
-        // ),
-         applyMiddleware(thunk)
+     applyMiddleware(thunk)
     );
 
     return store;

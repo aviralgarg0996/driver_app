@@ -5,7 +5,7 @@ import querystring from "querystring";
 import axios from "axios"
 import NetInfo from "@react-native-community/netinfo";
 //import { getSocketClient } from "../utilities/SocketClient";
-
+import {Alert} from "react-native"
 
 let logintoken = "";
 
@@ -56,6 +56,7 @@ class RestClient {
                         console.warn("eroro", error);
                     });
             }).catch(error => {
+                Alert.alert(JSON.stringify(error))
                 fulfill({ message: 'Please check your internet connectivity or our server is not responding.url-' + url });
             });
         });

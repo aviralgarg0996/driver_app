@@ -250,7 +250,7 @@ class Home extends Component {
           onClickSettings={() => navigate('Settings')}
           onDrawerOpen={() => navigate('DrawerOpen')}
           availabilityStatus={this.props.driverAvailabilityStatus}
-          goBackIcon={false}
+          goBackIcon={true}
           toggleSwitch={true}
           navigation={this.props.navigation}
         />

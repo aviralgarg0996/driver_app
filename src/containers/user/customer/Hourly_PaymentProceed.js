@@ -91,7 +91,7 @@ class Hourly_PaymentProceed extends Component<{}> {
   }
 
   onClickPay() {
-    let { navigate } = this.props;
+    let { navigate } = this.props.navigation;
     if (this.state.ActiveButton) {
       navigate('PaymentSuccess');
     }
