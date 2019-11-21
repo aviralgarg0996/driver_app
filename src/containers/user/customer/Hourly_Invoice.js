@@ -59,7 +59,7 @@ class Hourly_Invoice extends Component<{}> {
   onClickProceed() {
     let { navigate } = this.props.navigation;
     this.props.dispatch({ type: 'SET_HOURLYSERVICE_TABINDEX', index: 2 });
-    his.props.navigation.navigate('Hourly_PaymentProceed');
+    this.props.navigation.navigate('Hourly_PaymentProceed');
   }
 
 

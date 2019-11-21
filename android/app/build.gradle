@@ -131,8 +131,8 @@ android {
         applicationId "com.itshere"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 80
+        versionName "2.0.0"
     }
     splits {
         abi {

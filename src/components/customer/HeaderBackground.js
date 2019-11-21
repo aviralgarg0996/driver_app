@@ -16,7 +16,6 @@ import LinearGradient from 'react-native-linear-gradient';
 import Constants from '../../constants';
 import RestClient from '../../utilities/RestClient';
 import Connection from '../../config/Connection';
-var navigate = null;
 var goBack = null;
 class HeaderBackground extends Component {
   constructor(props) {
@@ -36,7 +35,7 @@ class HeaderBackground extends Component {
   }
 
   render() {
-    navigate = this.props.navigation;
+  const  navigate = this.props.navigation;
     return (
       <LinearGradient colors={[Constants.Colors.LightBlue, Constants.Colors.LightBlue]} style={styles.navigationBarcontainer}>
         <View style={styles.navigationBar}>
@@ -70,7 +69,7 @@ class HeaderBackground extends Component {
           <View style={[styles.navBarRight]}>
             <TouchableOpacity style={[{ flexDirection: 'row' }]}
               onPress={() => {
-                this.props.navigation.navigate("customerSettings")
+                navigate("customerSettings")
               }
               }>
               <Image
