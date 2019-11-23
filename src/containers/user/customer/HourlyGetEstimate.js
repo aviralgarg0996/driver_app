@@ -81,47 +81,7 @@ class HourlyGetEstimate extends Component<{}> {
     }
 
 
-    // componentDidMount() {
-    //     navigator.geolocation.getCurrentPosition((position) => {
-    //         var lat = position.coords.latitude;
-    //         var long = position.coords.longitude;
-
-    //         // var initialRegion = {
-    //         //     latitude: lat,
-    //         //     longitude: long,
-    //         //     latitudeDelta: LATITUDE_DELTA,
-    //         //     longitudeDelta: LONGITUDE_DELTA,
-    //         // }
-
-    //         // this.setState({ initialPosition: initialRegion });
-    //         // this.setState({ markerPosition: initialRegion });
-    //     },
-    //         (error) => this.setState({ error: error.message }),
-    //         { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 },
-    //     );
-
-    //     this.watchID = navigator.geolocation.getCurrentPosition((position) => {
-    //         var lat = position.coords.latitude;
-    //         var long = position.coords.longitude;
-
-    //         // var lastRegion = {
-    //         //     latitude: lat,
-    //         //     longitude: long,
-    //         //     latitudeDelta: LATITUDE_DELTA,
-    //         //     longitudeDelta: LONGITUDE_DELTA,
-    //         // }
-
-    //         // this.setState({ initialPosition: lastRegion });
-    //         // this.setState({ markerPosition: lastRegion });
-    //     });
-    // }
-
-
-    componentWillUnmount() {
-        //  navigator.geolocation.clearWatch(this.watchID);
-    }
-
-
+   
     vehicalList(item) {
         console.log('cost====', item)
         var width = 100 / this.props.state.FilteredTransportArray.length;
@@ -222,118 +182,15 @@ class HourlyGetEstimate extends Component<{}> {
     }
 
     onHelpDriverClick() {
-        if ((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location') || this.props.state.vehicleID == 0) {
-            this.refs.toast.show('You have not select either Start Location, End Location or Vehicle', DURATION.LENGTH_LONG);
-        } else {
-            var helpValue = !this.state.DriverHelp;
-
-            var duration = this.props.state.HourlyServiceDisplayDuration.toLowerCase().replace(' hours', '').replace(' hour', '');
-
-            var pickup = [
-                {
-                    "pickup_point": this.props.state.Hourly_pickupArr[0].lat + ',' + this.props.state.Hourly_pickupArr[0].long,
-                    "address": this.props.state.Hourly_pickupArr[0].address,
-                    "pickup_status": 0,
-                    "arrive_status": 0,
-                    "priority": 0,
-                }
-            ]
-            var drop = [
-                {
-                    "drop_point": this.props.state.Hourly_dropArr[0].lat + ',' + this.props.state.Hourly_pickupArr[0].long,
-                    "address": this.props.state.Hourly_dropArr[0].address,
-                    "drop_status": 0,
-                    "priority": 0,
-                }
-            ]
-            AsyncStorage.getItem("id").then((value) => {
-
-                fetch(CustomerConnection.getTempUrl() + 'place-order/vehiclecalculation', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "pickupLocation": [
-                            pickup[0].address
-                        ],
-                        "dropoffLocation": [
-                            drop[0].address
-                        ],
-                        "duration": this.props.state.HourlyItem,
-                        "service_type": 5,
-                        "driver_help": this.state.DriverHelp,
-                        "extra_help": this.state.ExtraHelp
-                    }),
-                }).then((response) => response.json())
-                    .then((arr) => {
-
-                        console.log(JSON.stringify(arr.data));
-                        this.props.dispatch({ type: 'SET_VEHICLECOST', _data: arr.data });
-                        this.setState({ DriverHelp: helpValue });
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
-            }
-            )
-        }
+        this.setState({ DriverHelp: !this.state.DriverHelp },()=>{
+        !((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location')) &&        this.checkFlat()
+          });
 
     }
     onExtraHelperClick() {
-        if ((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location') || this.props.state.vehicleID == 0) {
-            this.refs.toast.show('You have not select either Start Location, End Location or Vehicle', DURATION.LENGTH_LONG);
-        } else {
-            var extraHelp = !this.state.ExtraHelp;
-            var pickup = [
-                {
-                    "pickup_point": this.props.state.Hourly_pickupArr[0].lat + ',' + this.props.state.Hourly_pickupArr[0].long,
-                    "address": this.props.state.Hourly_pickupArr[0].address,
-                    "pickup_status": 0,
-                    "arrive_status": 0,
-                    "priority": 0,
-                }
-            ]
-            var drop = [
-                {
-                    "drop_point": this.props.state.Hourly_dropArr[0].lat + ',' + this.props.state.Hourly_pickupArr[0].long,
-                    "address": this.props.state.Hourly_dropArr[0].address,
-                    "drop_status": 0,
-                    "priority": 0,
-                }
-            ]
-
-            AsyncStorage.getItem("id").then((value) => {
-                fetch(CustomerConnection.getTempUrl() + 'place-order/vehiclecalculation', {
-                    method: 'POST',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        "pickupLocation": [
-                            pickup[0].address
-                        ],
-                        "dropoffLocation": [
-                            drop[0].address
-                        ],
-                        "duration": this.props.state.HourlyItem,
-                        "service_type": 5,
-                        "driver_help": this.state.DriverHelp,
-                        "extra_help": this.state.ExtraHelp
-                    }),
-                }).then((response) => response.json())
-                    .then((arr) => {
-                        this.props.dispatch({ type: 'SET_VEHICLECOST', _data: arr.data });
-                        this.setState({ ExtraHelp: extraHelp });
-                    })
-                    .catch((error) => {
-                        console.error(error);
-                    });
-            }
-            )
-        }
+        this.setState({ ExtraHelp: !this.state.ExtraHelp },()=>{
+        !((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location')) &&        this.checkFlat()
+          });
     }
     onInsuranceClick() {
         if ((this.props.state.Hourly_dropArr[0].address == 'Choose End Location') || (this.props.state.Hourly_pickupArr[0].address == 'Choose Start Location') || this.props.state.vehicleID == 0) {
@@ -429,13 +286,11 @@ class HourlyGetEstimate extends Component<{}> {
 
         });
 
-        var len = this.props.state.Hourly_dropArr.length;
         this.props.state.Hourly_dropArr.map((val, i) => {
 
             drop[i] = val.lat + ',' + val.long;
 
         });
-        var duration = this.props.state.HourlyServiceDisplayDuration.toLowerCase().replace(' hours', '').replace(' hour', '');
         var pickup = [
             {
                 "pickup_point": this.props.state.Hourly_pickupArr[0].lat + ',' + this.props.state.Hourly_pickupArr[0].long,
@@ -455,9 +310,18 @@ class HourlyGetEstimate extends Component<{}> {
         ]
 
         AsyncStorage.getItem("id").then((value) => {
-            console.log("all datas", JSON.stringify({
-                "pickupLocation": ["11 Lee Centre Dr, Scarborough, ON M1H 3J5, Canada"], "dropoffLocation": ["22 Wellesley St E, Toronto, ON M4Y 1G3, Canada"], "duration": 2, "service_type": 5, "driver_help": false, "extra_help": false
-            }));
+        console.log("datainhourly", JSON.stringify({
+            "pickupLocation": [
+                pickup[0].address
+            ],
+            "dropoffLocation": [
+                drop[0].address
+            ],
+            "duration": this.props.state.HourlyItem,
+            "service_type": 5,
+            "driver_help": this.state.DriverHelp,
+            "extra_help": this.state.ExtraHelp
+        }))
             fetch(CustomerConnection.getTempUrl() + 'place-order/vehiclecalculation', {
                 method: 'POST',
                 headers: {
