@@ -234,10 +234,6 @@ console.log("ths.props",this.props)
     return (
       <View style={{ flex: 1 ,borderWidth:1}}>
         <View style={[styles.rootContainer]}>
-          {!this.props.locationData.showmap.HourlyGetEstimate &&
-
-
-
             <MapView
               ref={ref => { this.map = ref; }}
               style={{ height: Constants.BaseStyle.DEVICE_HEIGHT / 100 * 75, zIndex: 0 }}
@@ -247,9 +243,7 @@ console.log("ths.props",this.props)
               followsUserLocation={false}
               pitchEnabled={false}
               rotateEnabled={false}
-            //   customMapStyle={Constants.MapStyle.default}
-            //minZoomLevel={15}
-            >
+                >
 
               {this.props.state.markerPositions.map((marker, i) => (
                 <MapView.Marker
@@ -261,7 +255,7 @@ console.log("ths.props",this.props)
               ))}
 
             </MapView>
-          }
+          
 
           <BoxShadow setting={shadowForPickup}>
             <View style={[styles.ButtonPickupStyle, { opacity: 0.8, backgroundColor: '#ffffff', borderColor: '#ffffff' }]}>

@@ -131,7 +131,19 @@ class HourlyGetEstimate extends Component<{}> {
             ]
             
             AsyncStorage.getItem("id").then((value) => {
-                console.log("idddddd",value)
+                console.log("Pickup in hourly",JSON.stringify({
+                    "pickup": pickup,
+                    "drop_location": drop,
+                    "date": this.props.state.HourlyServiceDate,
+                    "time": this.props.state.HourlyServiceDisplayTime,
+                    "id": value,
+                    'vehicle': this.props.state.vehicleID,
+                    'duration': this.props.state.HourlyItem,
+                    "service_type": 5,
+                    'extraHelper': this.state.ExtraHelp,
+                    'driver_help': this.state.DriverHelp
+
+                }))
                 fetch(CustomerConnection.getTempUrl() + 'place-order/create', {
                     method: 'POST',
                     headers: {
@@ -148,20 +160,7 @@ class HourlyGetEstimate extends Component<{}> {
                         'duration': this.props.state.HourlyItem,
                         "service_type": 5,
                         'extraHelper': this.state.ExtraHelp,
-                        'driver_help': this.state.DriverHelp,
-                        // 'duration': parseInt(duration),
-                        // 'driverHelp': this.state.DriverHelp,
-                        // 'extraHelper': this.state.ExtraHelp,
-                        // 'buyInsurance': this.state.Insurance
-                        // "coupon": {
-                        //     "code": "AXX0000AA",
-                        //     "discount": 30,
-                        //     "upto": 100
-                        // },
-                        // "gift_card": {
-                        //     "code": "AXX0000AA",
-                        //     "amount": 30
-                        // },
+                        'driver_help': this.state.DriverHelp
 
                     }),
 
@@ -309,19 +308,7 @@ class HourlyGetEstimate extends Component<{}> {
             }
         ]
 
-        AsyncStorage.getItem("id").then((value) => {
-        console.log("datainhourly", JSON.stringify({
-            "pickupLocation": [
-                pickup[0].address
-            ],
-            "dropoffLocation": [
-                drop[0].address
-            ],
-            "duration": this.props.state.HourlyItem,
-            "service_type": 5,
-            "driver_help": this.state.DriverHelp,
-            "extra_help": this.state.ExtraHelp
-        }))
+      
             fetch(CustomerConnection.getTempUrl() + 'place-order/vehiclecalculation', {
                 method: 'POST',
                 headers: {
@@ -337,11 +324,12 @@ class HourlyGetEstimate extends Component<{}> {
                     ],
                     "duration": this.props.state.HourlyItem,
                     "service_type": 5,
-                    "driver_help": this.state.DriverHelp,
-                    "extra_help": this.state.ExtraHelp
+                    "driverHelp": this.state.DriverHelp,
+                    "extraHelper": this.state.ExtraHelp
                 }),
             }).then((response) => response.json())
                 .then((arr) => {
+                    console.log("arr in data",arr)
                     this.props.dispatch({ type: 'SET_VEHICLECOST', _data: arr.data });
                     this.props.dispatch({ type: 'SET_HOURLYSERVICE_TABINDEX', index: 1 });
                     showFlat = true
@@ -349,8 +337,7 @@ class HourlyGetEstimate extends Component<{}> {
                 .catch((error) => {
                     console.error(error);
                 });
-        }
-        )
+        
     }
 
 
