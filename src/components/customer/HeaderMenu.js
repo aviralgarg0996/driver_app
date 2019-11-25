@@ -33,6 +33,8 @@ class HeaderMenu extends Component<{}> {
     this.setState({ selectedTabFlag: this.props.state.selectedTab })
   }
   onClickLocation() {
+    console.log("props",this.props)
+
     if (this.props.state.HomeTabsIndex > 0) {
       let { dispatch } = this.props;
 
@@ -50,6 +52,8 @@ class HeaderMenu extends Component<{}> {
   }
 
   onClickService() {
+    console.log("props",this.props)
+
     if (this.props.catId > 2) {
       const resetAction = StackActions.reset({
         index: 0,
@@ -64,6 +68,8 @@ class HeaderMenu extends Component<{}> {
   }
 
   onClickPayment = () => {
+    console.log("props",this.props)
+
     if (this.props.catId > 3) {
       const resetAction = StackActions.reset({
         index: 0,
@@ -77,11 +83,14 @@ class HeaderMenu extends Component<{}> {
   }
 
   onClickSelectDriver = () => {
+    if (this.props.catId > 3) {
+    console.log("props",this.props)
     if (this.props.state.HomeTabsIndex > 0) {
       let { dispatch } = this.props;
       this.props.dispatch({ type: 'SET_SELECTED_FLAG', selectedTabFlag: 3 }, () => this.setState({ selectedTabFlag: 3 }));
       navigate('Home_SelectDriver');
     }
+  }
   }
 
   render() {

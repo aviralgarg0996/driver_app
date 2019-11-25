@@ -18,7 +18,7 @@ import {
 
 import Background from "../../components/common/Background";
 import Constants from "../../constants";
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import * as UserActions from '../../redux/modules/user';
@@ -28,33 +28,33 @@ class CustomerSettingsList extends Component {
     super(props);
     this.state = {
       SettingsData: [
-        // {
-        //   id: 0,
-        //   setting: "Notifications"
-        // },
-        // {
-        //   id: 1,
-        //   setting: "Serving Area"
-        // },
+        {
+          id: 0,
+          setting: "Wallet"
+        },
+        {
+          id: 1,
+          setting: "Gift Card"
+        },
        
-        // {
-        //   id: 3,
-        //   setting: "Payment Settings and Reports"
-        // },
+        {
+          id: 3,
+          setting: "Address Book"
+        },
          
-        // {
-        //   id: 5,
-        //   setting: "Weekly Schedule"
-        // },
+        {
+          id: 5,
+          setting: "Sub-Member"
+        },
          
-        // {
-        //   id: 6,
-        //   setting: "Certificate and skill"
-        // },
-        // {
-        //   id: 7,
-        //   setting: "Equipment"
-        // },
+        {
+          id: 6,
+          setting: "Following Driver"
+        },
+        {
+          id: 7,
+          setting: "Payment"
+        },
         {
           id: 8,
           setting: "Change Password"
@@ -63,14 +63,14 @@ class CustomerSettingsList extends Component {
           id: 9,
           setting: "Change Phone"
         },
-        // {
-        //   id: 10,
-        //   setting: "Miscellaneous"
-        // },
-        // {
-        //   id: 11,
-        //   setting: "View Tutorials"
-        // }
+        {
+          id: 10,
+          setting: "Notifications"
+        },
+        {
+          id: 11,
+          setting: "Delgate Support"
+        }
       ]
     };
     //this.renderSettingList = this.renderSettingList.bind(this);
@@ -79,38 +79,38 @@ class CustomerSettingsList extends Component {
   onItemSelected(id){
     switch (id) {
       case 0:
-      this.props.navigate('NotificationSettings');
+      // this.props.navigate('NotificationSettings');
         break;
       case 1:
-      this.props.navigate('ServingArea');
+      // this.props.navigate('ServingArea');
         break;
       case 2:
-      this.props.navigate('WeekSchedule');
+      // this.props.navigate('WeekSchedule');
         break;
       // case 3:
       // this.props.navigate('PaymentSettings');
       //   break;
       case 4:
-      this.props.navigate('DriverCalender',{selectedDateObj:moment(new Date()).format('YYYY-MM-DD')}); 
+      // this.props.navigate('DriverCalender',{selectedDateObj:moment(new Date()).format('YYYY-MM-DD')}); 
         break;
       case 5:
-        this.props.navigate('Shedule');
+        // this.props.navigate('Shedule');
         break; 
       case 6:
-      this.props.navigate("Certificates")      
+      // this.props.navigate("Certificates")      
         break;
 
       case 7:
-      this.props.navigate("Equipment")
+      // this.props.navigate("Equipment")
         break;
       case 8:
         this.props.navigate('ChangePassword');
         break;
       case 9:
-      this.props.toggleModal()
+      // this.props.toggleModal()
        break;
       case 10:
-      this.props.navigate('Miscellaneous');
+      // this.props.navigate('Miscellaneous');
         break;
       // case 11:
       //   break;
@@ -129,7 +129,7 @@ class CustomerSettingsList extends Component {
       >
         <View style={styles.categoryRow}>
           <Text style={[styles.settingMsg]}>{value.setting}</Text>
-          <Icon name="angle-right" size={30} color='black' style={[styles.navIcons,{marginLeft:Constants.BaseStyle.DEVICE_WIDTH/100 * 2}]} />
+          <Icon name="rocket" size={30} color='black' style={[styles.navIcons,{marginLeft:Constants.BaseStyle.DEVICE_WIDTH/100 * 2}]} />
         </View>
       </TouchableOpacity>
     );
@@ -183,9 +183,9 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-//   toggleModal= () => {
-//     dispatch({type: UserActions.PHONEVERIFICATION_VISIBILITY, visibility:true});
-// }
+  toggleModal: () => {
+    dispatch({type: UserActions.PHONEVERIFICATION_VISIBILITY, visibility:true});
+}
 }
 };
 
