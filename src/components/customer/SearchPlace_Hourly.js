@@ -44,7 +44,7 @@ class SearchPlace_Hourly extends Component<{}> {
       Constants.GoogleAPIKey +
       '';
 
-    if (this.props.locationData.currentLocation != null) {
+    if (this.props.locationData && this.props.locationData.currentLocation) {
       let locationString =
         '&location=' +
         this.props.locationData.currentLocation.coords.latitude +

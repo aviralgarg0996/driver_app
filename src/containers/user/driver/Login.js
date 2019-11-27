@@ -50,10 +50,10 @@ class Login extends Component {
         this.state = {
             // email: "",
             // password: "",
-          //  email: "ab.hi.mink02@gmail.com",
-           // password: "Steve@123456",
-          email: "",
-           password: "",
+           email: "ab.hi.mink02@gmail.com",
+           password: "Steve@123456",
+        //   email: "",
+        //    password: "",
             // email: "a.vi.ral.garg099.6@gmail.com",
             // password: 'Avi@123456',
             ModalVisible: false,
@@ -64,14 +64,14 @@ class Login extends Component {
         console.log("AsyncStorage", AsyncStorage.getAllKeys())
     }
 
-    loginUser() {
+    loginUser=()=> {
         let context = this;
         let { dispatch } = this.props;
         let { email, phone, password } = this.state;
         let { navigate } = this.props.navigation;
 
         if (_.isEmpty(email && email.trim())) {
-            dispatch(ToastActionsCreators.displayInfo('Please enter your email'))
+            ToastActionsCreators.displayInfo('Please enter your email')
             return;
         }
 
