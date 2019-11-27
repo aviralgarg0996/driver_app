@@ -48,10 +48,10 @@ class MapView_HourlyService extends Component<{}> {
         longitudeDelta: 1,
       },
       markerPosition: {
-        latitude: 28.6139,
-        longitude: 77.2090,
-        latitudeDelta: 1,
-        longitudeDelta: 1,
+      //  latitude: 28.6139,
+        //longitude: 77.2090,
+        //latitudeDelta: 1,
+        //longitudeDelta: 1,
       },
       isVisible: false,
       durationTime: [{ time: '1 hour' }, { time: '2 hours' }, { time: '3 hours' }, { time: '4 hours' }, { time: '5 hours' }, { time: '6 hours' }, { time: '7 hours' }, { time: '8 hours' }, { time: '9 hours' }, { time: '10 hours' },
@@ -238,7 +238,7 @@ console.log("ths.props",this.props)
               ref={ref => { this.map = ref; }}
               style={{ height: Constants.BaseStyle.DEVICE_HEIGHT / 100 * 75, zIndex: 0 }}
               zoomEnabled={true}
-              initialRegion={this.props.state.initialPosition}
+              initialRegion={this.state.initialPosition}
               showsUserLocation={true}
               followsUserLocation={false}
               pitchEnabled={false}

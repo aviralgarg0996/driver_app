@@ -42,7 +42,7 @@ class SearchPlace extends Component {
 
     //  console.log();
 
-      if (this.props.locationData.currentLocation != null) {
+    if (this.props.locationData.currentLocation != null) {
       let locationString =
         '&location=' +
         this.props.locationData.currentLocation.coords.latitude +
@@ -62,7 +62,7 @@ class SearchPlace extends Component {
     } else {
       // 49.2827° N, 123.1207° W
       let locationString = '&location=49.2827,-123.1207';
-      let radius = '&radius=' + 200000; // radius is in meter for now it 200KM
+      let radius = '&radius=' + 50000; // radius is in meter for now it 200KM
       let key = '&key=' + Constants.GoogleAPIKey;
       let strictbounds = '&strictbounds';
       url =
@@ -78,8 +78,9 @@ class SearchPlace extends Component {
     fetch(url)
       .then(response => response.json())
       .then(responseData => {
-        if (responseData !== null)
+        if (responseData !== null) {
           this.setState({searchList: responseData.predictions});
+        }
         //  this.props.dispatch({type : 'SEARCHPLACE', arr : responseData.predictions});
         //else {
         //this.props.dispatch({type : 'SEARCHPLACE', arr : []});
@@ -101,10 +102,8 @@ class SearchPlace extends Component {
       '&key=' +
       Constants.GoogleAPIKey +
       '';
-    
-      console.log(url);
 
-
+    console.log(url);
 
     fetch(url)
       .then(response => response.json())

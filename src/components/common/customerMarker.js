@@ -202,13 +202,13 @@ export default {
           latitude: item.geometry[0].coordinates[1],
           longitude: item.geometry[0].coordinates[0],
         }}
-        title={item.firstName + ' ' + item.lastName}
+    //    title={item.firstName + ' ' + item.lastName}
         onPress={() => {
           if (item.onMarkerAction) {
             item.onMarkerAction(item.markerData);
           }
         }}>
-        {/* <Image source={{uri: viechleImagePath}}  style={{height:20,width:20}}/> */}
+        {/* { <Image source={{uri: viechleImagePath}}  style={{height:20,width:20}}/> } */}
       </MapView.Marker.Animated>
     );
   },

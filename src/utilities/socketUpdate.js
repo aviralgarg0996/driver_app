@@ -185,7 +185,7 @@ export default {
       });
 
       var d = [
-      /*  '5bda93c59f19ad5e722d8ca3',
+      /* '5bda93c59f19ad5e722d8ca3',
         '5bff9d7932e05007b67ee494',
         '5c00adbf56b711154419f236',
         '5c124b701a0dc253bdf4529b',
@@ -200,7 +200,7 @@ export default {
 
       console.log(request);
 
-      d.map(driverid => {
+     d.map(driverid => {
         customerSocketObj.emit('send-ltlng', {
           driverid: driverid,
           geometry: {
@@ -265,6 +265,7 @@ export default {
     // customerSocketObj.emit('send-customer-lctn', data);
 
     console.log(request);
+
 
     d.map(driverid => {
       customerSocketObj.emit('send-ltlng', {
